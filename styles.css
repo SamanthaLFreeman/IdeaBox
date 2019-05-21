@@ -69,6 +69,8 @@ li {
 .top-section {
 	background-color: #A9AAD2;
 	grid-area: top;
+	display: flex;
+	justify-content: center;
 }
 
 .input-border {
