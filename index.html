@@ -28,9 +28,9 @@
   	      	  Filter by Quality
   	      	</h2>
   	      	<ul>
-  	      	  <li>Swill</li>
-  	      	  <li>Plausible</li>
-  	      	  <li>Genius</li>
+  	      	  <li id='js-swill'>Swill</li>
+  	      	  <li id='js-plausible'>Plausible</li>
+  	      	  <li id='js-genius'>Genius</li>
   	      	</ul>
   	      	<label class='new-quality-label'> New Quality
   	      	<input 
@@ -38,7 +38,7 @@
   	      	  class='new-quality-input' 
   	      	  id='js-new-quality-input'>
   	      	</label>
-  	      	<button class='nav-btn' id='js-new-quality'>
+  	      	<button class='nav-btn' id='js-new-quality-btn'>
   	      		Add New Quality
   	      	</button>
   	      </div>
@@ -56,13 +56,13 @@
         type='text' 
         class='body-input input-border' 
         id='js-body-input'>
-        <button class='save-btn'> Save
+        <button class='save-btn' id='js-save-btn'> Save
         </button>
-        <button class='search-btn'>?
+        <button class='search-btn' id='js-search-btn'>?
         </button>
         <input
           type='text'
-          class=' search-input input-border'	
+          class='search-input input-border'	
           id='js-search-input'>
       </label>
     </section>
