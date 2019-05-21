@@ -3,21 +3,27 @@
   <head>
   	<link rel='stylesheet' type= 'text/css' href= 'reset.css'>
   	<link rel='stylesheet' type= 'text/css' href= 'styles.css'>
+  	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
   </head>
   <body>
+   <main>
   	<nav>
-  	  <div>
+  	  <div class='nav-border'>
   	    <h1>
-  	      Idea Box Redux
+  	      IdeaBox Redux
   	  	</h1>
   	  </div>
-  	  <div>
+  	  <div class='nav-border'>
   	  	<h2> 
   	  	  Filter Starred Ideas
   	  	</h2>
-  	      <button class='show-starred-ideas-btn' id='js-show-starred-ideas-btn'>
-  	      </button>
-  	      <div>
+  	    <button 
+  	      class='nav-btn' 
+  	      id='js-show-starred-ideas-btn'> 
+  	      Show Starred Ideas
+  	    </button>
+  	  </div>
+  	      <div class='nav-border'>
   	      	<h2> 
   	      	  Filter by Quality
   	      	</h2>
@@ -26,32 +32,41 @@
   	      	  <li>Plausible</li>
   	      	  <li>Genius</li>
   	      	</ul>
-  	      </div>
-  	      <div>
-  	      	<label>
+  	      	<label class='new-quality-label'> New Quality
   	      	<input 
-  	      	  type= 'text' class='new-quality-input' id='js-new-quality-input'>
-  	      	<button class='new-quality-btn' id='js-new-quality'>
+  	      	  type='text' 
+  	      	  class='new-quality-input' 
+  	      	  id='js-new-quality-input'>
   	      	</label>
+  	      	<button class='nav-btn' id='js-new-quality'>
+  	      		Add New Quality
   	      	</button>
   	      </div>
   	  </div>
   	</nav>
-  	<div>
-      <label>
+  	<section class='top-section'>
+      <label class='title-input-label'> Title
       <input
-        type= 'text' class='title-input' id='js-title-input'>
+        type='text' 
+        class='title-input input-border' 
+        id='js-title-input'>
       </label>
-      <label>
+      <label class='body-input-label'> Body
       <input
-        type= 'text' class='body-input' id='js-body-input'>
-        <button class='save-btn'>
+        type='text' 
+        class='body-input input-border' 
+        id='js-body-input'>
+        <button class='save-btn'> Save
+        </button>
+        <button class='search-btn'>?
         </button>
         <input
-          type= 'text'>
+          type='text'
+          class=' search-input input-border'	
+          id='js-search-input'>
       </label>
-    </div>
-    <section>
+    </section>
+    <section class='bottom-section'>
       <article>
       	<div> 
       	  top of card
@@ -66,11 +81,12 @@
     </section>
     <script 
       type='text/javascript' 
-      src= 'idea.js'>
+      src='idea.js'>
     </script>
     <script 
       type='text/javascript'
-      src= 'main.js'>
+      src='main.js'>
     </script>
+  </main>
   </body>
 </html>
