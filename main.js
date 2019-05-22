@@ -25,7 +25,6 @@ function updateIdeaText() {
   createNewCard();
   ideaTitle.innerText = titleInput.value;
   ideaBody.innerText = bodyInput.value;
-  
 }
 
 //When save is clicked a new card appears in the bottom section
@@ -50,4 +49,12 @@ function createNewCard() {
         <img src='Images/downvote.svg' alt='down-arrow-icon' id='js-down-arrow-svg' />
       </div>
     </article>`
-)};
+)
+    clearInputs();
+};
+
+//Clears the two input fields (add to new card function, so it clears after a card is created)
+function clearInputs() {
+  titleInput.value = "";
+  bodyInput.value = "";
+}
