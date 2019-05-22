@@ -66,27 +66,84 @@ li {
 	padding: 10px;
 }
 /******TOP SECTION*****/
+.top-section-labels {
+	font-size: 12px;
+	font-weight: 600;
+	width: 50%;
+	margin: 10px;
+	color: #1f1f3d;
+}
+
+.title-input {
+	margin-top: 5px;
+	padding: 10px;
+}
+
+
+.title-input-label {
+	display: flex;
+    flex-direction: column;
+}
+
+.body-input-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-input {
+	margin-top: 5px;
+	padding: 10px;
+}
+
+.search-input-label {
+	display: flex;
+	background-color: #1F1F3D;
+}
+
+.search-icon {
+	color: #FFFFFF;
+	background-color: #1F1F3D;
+	padding: 5px;
+	font-size: 15px;
+	margin: auto;
+}
+
+.search-input {
+	width: 100%;
+	padding: 10px;
+}
 
 .top-section {
 	background-color: #A9AAD2;
 	grid-area: top;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 
 .input-border {
-	border: 1px solid #353567;
+	border: 1px solid #1F1F3D;
+}
+
+.save-btn-label {
+	display: flex;
+	flex-direction: column;
 }
 
 .save-btn {
 	background-color: #1F1F3D;
 	color: #FFF;
+	font-weight: 600;
+	font-size: 15px;
+	padding: 10px;
+	border: 1px solid #A9AAD2;
 }
 
-.search-btn {
+/*.search-btn {
 	background-color: #1F1F3D;
 	color: #FFF;
-}
+}*/
 
 /******BOTTOM SECTION*****/
 

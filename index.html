@@ -4,6 +4,7 @@
   	<link rel='stylesheet' type= 'text/css' href= 'reset.css'>
   	<link rel='stylesheet' type= 'text/css' href= 'styles.css'>
   	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
   <body>
    <main>
@@ -45,25 +46,28 @@
   	  </div>
   	</nav>
   	<section class='top-section'>
-      <label class='title-input-label'> Title
-      <input
-        type='text' 
-        class='title-input input-border' 
-        id='js-title-input'>
+      <label class='title-input-label top-section-labels'> Title
+        <input
+          type='text' 
+          class='title-input input-border' 
+          id='js-title-input'>
       </label>
-      <label class='body-input-label'> Body
-      <input
-        type='text' 
-        class='body-input input-border' 
-        id='js-body-input'>
+      <label class='body-input-label top-section-labels'> Body
+        <textarea
+          type='text' rows='3'
+          class='body-input input-border' 
+          id='js-body-input'></textarea>
+      </label>
+      <label class='save-btn-label top-section-labels'>
         <button class='save-btn' id='js-save-btn'> Save
         </button>
-        <button class='search-btn' id='js-search-btn'>?
-        </button>
+      </label>
+      <label class='search-input-label top-section-labels'>
+        <span class="fas fa-search search-icon"></span>
         <input
           type='text'
-          class='search-input input-border'	
-          id='js-search-input'>
+          class='search-input input-border' 
+          id='js-search-input' placeholder='Search ideas'>
       </label>
     </section>
     <section class='bottom-section'>
