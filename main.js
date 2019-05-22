@@ -19,15 +19,14 @@ var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section')
 
 //Event Listeners
+saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
-saveBtn.addEventListener('click', createNewCard);
 // searchBtn.addEventListener('click', null);
 // saveBtn.addEventListener('click', saveIdea);
 
-//When the user clicks save button, the text in the ideas are updated
-//the function listens for a click and revises content
-
+titleInput.addEventListener('keyup', disableBtns);
+bodyInput.addEventListener('keyup', disableBtns);
 
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
@@ -53,24 +52,21 @@ function createNewCard() {
     </article>`
 )
     clearInputs();
+    saveBtn.disabled = true;
 };
 
 //Clears the two input fields (add to new card function, so it clears after a card is created)
 function clearInputs() {
-  titleInput.value = "";
-  bodyInput.value = "";
+  titleInput.value = '';
+  bodyInput.value = '';
 }
 
 //Lists for a key up in the title and body inputs, then enables the save button 
-titleInput.addEventListener('keyup', function() {
-	saveBtn.disabled = false;
- 	titleText = titleInput.value
-});
-
-bodyInput.addEventListener('keyup', function(){
-	saveBtn.disabled = false;
-	bodyText = bodyInput.value;
-})
+function disableBtns() {
+  var disabledBtn = titleInput.value === '' || bodyInput.value === ''
+  saveBtn.disabled = disabledBtn;
+  console.log(disabledBtn)
+};
 
 //function to remove the card from the screen
 //It listens for a click on the delete button and then clears the card from the page
