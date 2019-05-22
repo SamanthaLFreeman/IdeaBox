@@ -1,3 +1,4 @@
+// Global Variables
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -13,12 +14,11 @@ var ideaCard = document.querySelector('#js-idea-card');
 var titleText = '';
 var bodyText = '';
 saveBtn.disabled = true;
-
-//added variables
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section')
 
+//Event Listeners
 saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
@@ -27,8 +27,8 @@ saveBtn.addEventListener('click', createNewCard);
 
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
-//When save is clicked a new card appears in the bottom section
 
+//When save is clicked a new card appears in the bottom section
 function createNewCard() {
   bottomSection.insertAdjacentHTML('afterbegin',
     `<article>
@@ -61,9 +61,22 @@ function clearInputs() {
   bodyInput.value = '';
 }
 
+//Lists for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
-	var disabledBtn = titleInput.value === '' || bodyInput.value === ''
-	saveBtn.disabled = disabledBtn;
-	console.log(disabledBtn)
+  var disabledBtn = titleInput.value === '' || bodyInput.value === ''
+  saveBtn.disabled = disabledBtn;
+  console.log(disabledBtn)
 };
+
+//function to remove the card from the screen
+//It listens for a click on the delete button and then clears the card from the page
+
+
+//When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
+
+
+//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
+
+
+//function that changes the 'star' button when it is active or not active
 
