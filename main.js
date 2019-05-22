@@ -19,10 +19,11 @@ var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section')
 
-// starredIdeasBtn.addEventListener('click', function());
-// newQualityBtn.addEventListener('click', function());
+// starredIdeasBtn.addEventListener('click', null);
+// newQualityBtn.addEventListener('click', null);
 saveBtn.addEventListener('click', updateIdeaText);
-// searchBtn.addEventListener('click', function());
+// searchBtn.addEventListener('click', null);
+// saveBtn.addEventListener('click', saveIdea);
 
 //When the user clicks save button, the text in the ideas are updated
 //the function listens for a click and revises content
@@ -63,11 +64,6 @@ function clearInputs() {
   titleInput.value = "";
   bodyInput.value = "";
 }
-
-// showStarredIdeasBtn.addEventListener('click', null);
-// addNewQualityBtn.addEventListener('click', null);
-// saveBtn.addEventListener('click', saveIdea);
-// searchBtn.addEventListener('click', null);
 
 titleInput.addEventListener('keyup', function() {
 	saveBtn.disabled = false;
