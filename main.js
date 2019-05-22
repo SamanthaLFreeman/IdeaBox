@@ -74,8 +74,9 @@ function disableBtns() {
 
 //When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
 
+
 //The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
-//function that changes the 'star' button when it is active
 
-//function that 
+//function that changes the 'star' button when it is active or not active
+
