@@ -19,21 +19,16 @@ var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section')
 
+saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
-saveBtn.addEventListener('click', updateIdeaText);
 // searchBtn.addEventListener('click', null);
 // saveBtn.addEventListener('click', saveIdea);
 
-//When the user clicks save button, the text in the ideas are updated
-//the function listens for a click and revises content
-function updateIdeaText() {
-  createNewCard();
-  ideaTitle.innerText = titleInput.value;
-  ideaBody.innerText = bodyInput.value;
-}
-
+titleInput.addEventListener('keyup', disableBtns);
+bodyInput.addEventListener('keyup', disableBtns);
 //When save is clicked a new card appears in the bottom section
+
 function createNewCard() {
   bottomSection.insertAdjacentHTML('afterbegin',
     `<article>
@@ -57,32 +52,18 @@ function createNewCard() {
     </article>`
 )
     clearInputs();
+    saveBtn.disabled = true;
 };
 
 //Clears the two input fields (add to new card function, so it clears after a card is created)
 function clearInputs() {
-  titleInput.value = "";
-  bodyInput.value = "";
+  titleInput.value = '';
+  bodyInput.value = '';
 }
 
-titleInput.addEventListener('keyup', function() {
-	saveBtn.disabled = false;
- 	titleText = titleInput.value
-});
-
-bodyInput.addEventListener('keyup', function(){
-	saveBtn.disabled = false;
-	bodyText = bodyInput.value;
-})
-
-// function saveIdea() {
-// event.preventDefault();
-// var bodyText = bodyInput.value;
-// 	ideaCard.insertAdjacentHTML('afterbegin', `<h3>
-// 	  ${titleText}
-// 	  </h3>
-// 	  <p>
-// 	  ${bodyText} 
-// 	  </p>`)
-// };
+function disableBtns() {
+	var disabledBtn = titleInput.value === '' || bodyInput.value === ''
+	saveBtn.disabled = disabledBtn;
+	console.log(disabledBtn)
+};
 
