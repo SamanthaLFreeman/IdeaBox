@@ -33,7 +33,8 @@
   	      	  <li id='js-plausible'>Plausible</li>
   	      	  <li id='js-genius'>Genius</li>
   	      	</ul>
-  	      	<label class='new-quality-label'> New Quality
+  	      	<label class='new-quality-label'> 
+              New Quality
   	      	<input 
   	      	  type='text' 
   	      	  class='new-quality-input' 
@@ -46,20 +47,25 @@
   	  </div>
   	</nav>
   	<section class='top-section'>
-      <label class='title-input-label top-section-labels'> Title
+      <label class='title-input-label top-section-labels'> 
+        Title
         <input
           type='text' 
           class='title-input input-border' 
-          id='js-title-input'>
+          id='js-title-input'/>
       </label>
-      <label class='body-input-label top-section-labels'> Body
+      <label class='body-input-label top-section-labels'> 
+        Body
         <textarea
-          type='text' rows='3'
+          type='text' 
+          rows='3'
           class='body-input input-border' 
-          id='js-body-input'></textarea>
+          id='js-body-input'>
+        </textarea>
       </label>
       <label class='save-btn-label top-section-labels'>
-        <button class='save-btn' id='js-save-btn'> Save
+        <button class='save-btn' id='js-save-btn'> 
+          Save
         </button>
       </label>
       <label class='search-input-label top-section-labels'>
@@ -67,29 +73,29 @@
         <input
           type='text'
           class='search-input input-border' 
-          id='js-search-input' placeholder='Search ideas'>
+          id='js-search-input' placeholder='Search ideas'/>
       </label>
     </section>
     <section class='bottom-section'>
-      <article>
+      <div>
       	<div class='top-card'> 
       	  <img src='Images/star.svg' alt='star-icon' class='star' id='js-star' />
           <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
       	</div>
-      	<div class='body-card'> 
-      	  <h3>
+      	<div class='body-card' id='js-idea-card'> 
+      	  <!-- <h3>
             Idea title
           </h3>
           <p>
             Idea body, Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.
-          </p>
+          </p> -->
       	</div>
       	<div class='bottom-card'> 
       	  <img src='Images/upvote.svg' alt='up-arrow-icon' id='js-up-arrow-svg' />
           <p class='quality-text'> Quality: <span class='quality-value' id='js-quality-value'>Swill</span></p>
          <img src='Images/downvote.svg' alt='down-arrow-icon' id='js-down-arrow-svg' />
       	</div>
-      </article>
+      </div>
     </section>
     <script 
       type='text/javascript' 
