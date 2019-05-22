@@ -1,3 +1,4 @@
+// Global Variables
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -13,25 +14,20 @@ var ideaCard = document.querySelector('#js-idea-card');
 var titleText = '';
 var bodyText = '';
 saveBtn.disabled = true;
-
-//added variables
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section')
 
+//Event Listeners
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
-saveBtn.addEventListener('click', updateIdeaText);
+saveBtn.addEventListener('click', createNewCard);
 // searchBtn.addEventListener('click', null);
 // saveBtn.addEventListener('click', saveIdea);
 
 //When the user clicks save button, the text in the ideas are updated
 //the function listens for a click and revises content
-function updateIdeaText() {
-  createNewCard();
-  ideaTitle.innerText = titleInput.value;
-  ideaBody.innerText = bodyInput.value;
-}
+
 
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
@@ -65,6 +61,7 @@ function clearInputs() {
   bodyInput.value = "";
 }
 
+//Lists for a key up in the title and body inputs, then enables the save button 
 titleInput.addEventListener('keyup', function() {
 	saveBtn.disabled = false;
  	titleText = titleInput.value
@@ -75,14 +72,14 @@ bodyInput.addEventListener('keyup', function(){
 	bodyText = bodyInput.value;
 })
 
-// function saveIdea() {
-// event.preventDefault();
-// var bodyText = bodyInput.value;
-// 	ideaCard.insertAdjacentHTML('afterbegin', `<h3>
-// 	  ${titleText}
-// 	  </h3>
-// 	  <p>
-// 	  ${bodyText} 
-// 	  </p>`)
-// };
+//function to remove the card from the screen
+//It listens for a click on the delete button and then clears the card from the page
 
+
+//When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
+
+//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
+
+//function that changes the 'star' button when it is active
+
+//function that 
