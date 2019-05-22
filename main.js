@@ -9,8 +9,33 @@ var bodyInput = document.querySelector('#js-body-input');
 var saveBtn = document.querySelector('#js-save-btn');
 var searchBtn = document.querySelector('#js-search-btn')
 var searchInput = document.querySelector('#js-search-input');
+var ideaCard = document.querySelector('#js-idea-card');
+var titleText = '';
+var bodyText = '';
+saveBtn.disabled = true;
 
-starredIdeasBtn.addEventListener('click', function());
-newQualityBtn.addEventListener('click', function());
-saveBtn.addEventListener('click', function());
-searchBtn.addEventListener('click', function());
+// showStarredIdeasBtn.addEventListener('click', null);
+// addNewQualityBtn.addEventListener('click', null);
+saveBtn.addEventListener('click', saveIdea);
+// searchBtn.addEventListener('click', null);
+
+titleInput.addEventListener('keyup', function() {
+	saveBtn.disabled = false;
+ 	titleText = titleInput.value
+});
+
+bodyInput.addEventListener('keyup', function(){
+	saveBtn.disabled = false;
+	bodyText = bodyInput.value;
+})
+
+function saveIdea() {
+event.preventDefault();
+var bodyText = bodyInput.value;
+	ideaCard.insertAdjacentHTML('afterbegin', `<h3>
+	  ${titleText}
+	  </h3>
+	  <p>
+	  ${bodyText} 
+	  </p>`)
+};
