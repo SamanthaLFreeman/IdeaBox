@@ -26,6 +26,15 @@ class Idea {
     delete ideas[this.id];
     window.localStorage.setItem("ideas", JSON.stringify(ideas));
   }
+
+  updateIdea(title, body) {
+    var ideas = JSON.parse(window.localStorage.getItem("ideas"));
+    ideas[this.id].title = title;
+    ideas[this.id].body = body;
+    this.title =  title;
+    this.body = body; 
+    window.localStorage.setItem("ideas", JSON.stringify(ideas));
+  }
   
   static listIdeas () {
     return JSON.parse(window.localStorage.getItem("ideas"));
