@@ -11,6 +11,7 @@ var saveBtn = document.querySelector('#js-save-btn');
 var searchBtn = document.querySelector('#js-search-btn')
 var searchInput = document.querySelector('#js-search-input');
 var ideaCard = document.querySelector('#js-idea-card');
+var bottomSection = document.querySelector('#js-bottom-section');
 var titleText = '';
 var bodyText = '';
 saveBtn.disabled = true;
@@ -28,7 +29,6 @@ saveBtn.addEventListener('click', createNewCard);
 saveBtn.addEventListener('click', createNewCard);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
-// ideaTitle.addEventListener('click', editIdeaCard);
 
 
 //When save is clicked a new card appears in the bottom section
@@ -41,10 +41,10 @@ function createNewCard() {
         <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
       </div>
       <div class='body-card'> 
-        <h3 id='js-idea-title'>
+        <h3 id='js-idea-title' contenteditable='true'>
           ${titleInput.value}
         </h3>
-        <p id='js-idea-body'>
+        <p id='js-idea-body' contenteditable='true'>
           ${bodyInput.value}
         </p>
       </div>
@@ -55,6 +55,7 @@ function createNewCard() {
       </div>
     </article>`
 )
+  	idea.listIdeas();
     clearInputs();
     saveBtn.disabled = true;
 };
@@ -74,20 +75,15 @@ function disableBtns() {
 
 function toggleFavorite() {
   var starButton = document.getElementById('favoriteBtn');
-  starButton.classList.toggle('orangeStar');
+  starButton.classList.add('orangeStar');
 };
 
-// function editIdeaCard() {
-//   ideaTitle.createElement('textarea')
-// }
-
-// ideaTitle.addEventListener('click', editIdeaCard);
-
-
-
-// function editIdeaCard() {
-//   ideaTitle.createElement('textarea')
-// };
+function editIdeaCard() {
+	var editText = document.querySelectorAll('#js-idea-text');
+	for (var i = 0; i < editText.length; i++) {
+	editText.createElement('textarea')
+	}
+};
 
 //function to remove the card from the screen
 //It listens for a click on the delete button and then clears the card from the page
@@ -102,8 +98,5 @@ function removeCard(e){
 //hover change delete image to active
 
 
-
-//function that changes the ‘star’ button when it is active or not active
-//When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
-//The user should be able to ‘commit’ their changes by pressing ‘enter/return’ and by clicking outside the text field
+//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
