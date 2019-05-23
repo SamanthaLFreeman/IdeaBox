@@ -21,7 +21,6 @@ var deleteBtn = document.getElementById('js-delete');
 
 //Event Listeners
 bottomSection.addEventListener('click', removeCard);
-bottomSection.addEventListener('mouseover', removeCard);
 saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
