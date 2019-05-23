@@ -167,6 +167,18 @@ article {
 	height: 30px;
 }
 
+.favorite {
+	background-color: transparent;
+	background-image: url(Images/star.svg);
+	background-size: auto;
+	height: 10px;
+	background-repeat: no-repeat;
+}
+
+.orangeFavorite {
+	background-image: url(Images/star-active.svg)
+}
+
 .star {
 	justify-content: flex-start;
 }

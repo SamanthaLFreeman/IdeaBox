@@ -11,12 +11,12 @@ var saveBtn = document.querySelector('#js-save-btn');
 var searchBtn = document.querySelector('#js-search-btn')
 var searchInput = document.querySelector('#js-search-input');
 var ideaCard = document.querySelector('#js-idea-card');
+var ideaTitle = document.querySelector('#js-idea-title');
+var ideaBody = document.querySelector('#js-idea-body');
+var bottomSection = document.querySelector('#js-bottom-section');
 var titleText = '';
 var bodyText = '';
 saveBtn.disabled = true;
-var ideaTitle = document.querySelector('#js-idea-title');
-var ideaBody = document.querySelector('#js-idea-body');
-var bottomSection = document.querySelector('#js-bottom-section')
 
 //Event Listeners
 saveBtn.addEventListener('click', createNewCard);
@@ -24,16 +24,24 @@ saveBtn.addEventListener('click', createNewCard);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
 // saveBtn.addEventListener('click', saveIdea);
-
+// starIcon.addEventListener('click', starIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
+
+bottomSection.addEventListener('load', dontDoItTilISaySo);
+	// if e.target === '' e.target.classList)
+// 
+function dontDoItTilISaySo(){
+	console.log('yo')
+}
 
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
   bottomSection.insertAdjacentHTML('afterbegin',
     `<article>
       <div class='top-card'> 
-        <img src='Images/star.svg' alt='star-icon' class='star' id='js-star' />
+        <button class='favorite' id='favoriteBtn' onclick='toggleFavorite()'>
+        </button>
         <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
       </div>
       <div class='body-card'> 
@@ -55,28 +63,30 @@ function createNewCard() {
     saveBtn.disabled = true;
 };
 
+
+function toggleFavorite() {
+	console.log('favoriting')
+	var starButton = document.getElementById('favoriteBtn');
+	starButton.classList.add('orangeFavorite')
+}
+
 //Clears the two input fields (add to new card function, so it clears after a card is created)
 function clearInputs() {
   titleInput.value = '';
   bodyInput.value = '';
 }
 
-//Lists for a key up in the title and body inputs, then enables the save button 
+//Listens for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
   var disabledBtn = titleInput.value === '' || bodyInput.value === ''
   saveBtn.disabled = disabledBtn;
-  console.log(disabledBtn)
-};
+  console.log(disabledBtn)};
 
-//function to remove the card from the screen
-//It listens for a click on the delete button and then clears the card from the page
+function starIdea() {
 
-
-//When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
-
-
-//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
-
+}
 
 //function that changes the 'star' button when it is active or not active
+//When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
+//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
