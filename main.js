@@ -30,33 +30,18 @@ saveBtn.addEventListener('click', createNewCard);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
-
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
-  bottomSection.insertAdjacentHTML('afterbegin',
-    `<article>
-      <div class='top-card'> 
-        <button class='favorite' id='favoriteBtn' onclick='toggleFavorite()'>
-        </button>
-        <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
-      </div>
-      <div class='body-card'> 
-        <h3 id='js-idea-title' contenteditable='true'>
-          ${titleInput.value}
-        </h3>
-        <p id='js-idea-body' contenteditable='true'>
-          ${bodyInput.value}
-        </p>
-      </div>
-      <div class='bottom-card'> 
-        <img src='Images/upvote.svg' alt='up-arrow-icon' id='js-up-arrow-svg' />
-        <p class='quality-text'> Quality: <span class='quality-value' id='js-quality-value'>Swill</span></p>
-        <img src='Images/downvote.svg' alt='down-arrow-icon' id='js-down-arrow-svg' />
-      </div>
-    </article>`
-)
-    clearInputs();
-  	idea.listIdeas();
+	var idea = new Idea (titleInput.value, bodyInput.value, Date.now());
+	console.log(idea)
+	var template = document.getElementById('new-card-template');
+	var clone = template.content.cloneNode(true);
+	clone.getElementById('article-card').setAttribute('data-id', idea.id)
+	clone.getElementById('js-idea-title').innerText = idea.title;
+	clone.getElementById('js-idea-body').innerText = idea.body;
+	clone.getElementById('js-quality-value').innerText = 'Swill';
+	bottomSection.insertBefore(clone, bottomSection.firstChild);
+	clearInputs();
     saveBtn.disabled = true;
 };
 
@@ -73,30 +58,39 @@ function disableBtns() {
   saveBtn.disabled = disabledBtn;
 };
 
+// Toggles the star icon
 function toggleFavorite() {
   var starButton = document.getElementById('favoriteBtn');
-  starButton.classList.add('orangeStar');
+  starButton.classList.toggle('orangeStar');
 };
 
-function editIdeaCard() {
-	var editText = document.querySelectorAll('#js-idea-text');
-	for (var i = 0; i < editText.length; i++) {
-	editText.createElement('textarea')
-	}
-};
-
-//function to remove the card from the screen
-//It listens for a click on the delete button and then clears the card from the page
-// event target MIGHT be the best way to select the correct card- button click should delete the card from localStorage and MAYBE refresh the page w/ current info.
-//when there are no idea cards created, there should be a placeholder text that disappears upon clicking into the text field creating an empty text field
+// Deletes a card from the window
 function removeCard(e){
   if (e.target.className === 'delete'){
     e.target.parentElement.parentElement.remove();
     }
-  }
+};
+
+// function returnText() {
+// 	event.keyCode === 13 
+// 		console.log('13')
+// };
+// ideaBody.addEventListener('blur', );
+// event.keyCode === 13
+
+// attempts to connect idea.js and main.js
+// Idea.listIdeas();
+// ['idea_id'].saveToStorage
+// on page load - how do we have these functions fire 
+
+// *In Progress
+//function to remove the card from the screen
+//It listens for a click on the delete button and then clears the card from the page
+// event target MIGHT be the best way to select the correct card- button click should delete the card from localStorage and MAYBE refresh the page w/ current info.
+//when there are no idea cards created, there should be a placeholder text that disappears upon clicking into the text field creating an empty text field
 
 //hover change delete image to active
 
-
 //The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
+// Tell the DOM that when the page loads retrieve the saved stringified object
