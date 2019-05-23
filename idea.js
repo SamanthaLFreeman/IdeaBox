@@ -65,13 +65,3 @@ class Idea {
     return JSON.parse(window.localStorage.getItem("ideas"));
   }
 }
-
-
-
-
-
-
-
-
-
-
