@@ -24,16 +24,15 @@ saveBtn.addEventListener('click', createNewCard);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
 // saveBtn.addEventListener('click', saveIdea);
-// starIcon.addEventListener('click', starIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
-bottomSection.addEventListener('load', dontDoItTilISaySo);
+// bottomSection.addEventListener('load', dontDoItTilISaySo);
 	// if e.target === '' e.target.classList)
-// 
-function dontDoItTilISaySo(){
-	console.log('yo')
-}
+// // 
+// function dontDoItTilISaySo(){
+// 	console.log('yo')
+// }
 
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
@@ -67,7 +66,7 @@ function createNewCard() {
 function toggleFavorite() {
 	console.log('favoriting')
 	var starButton = document.getElementById('favoriteBtn');
-	starButton.classList.add('orangeFavorite')
+	starButton.classList.toggle('orangeFavorite')
 }
 
 //Clears the two input fields (add to new card function, so it clears after a card is created)
@@ -81,10 +80,6 @@ function disableBtns() {
   var disabledBtn = titleInput.value === '' || bodyInput.value === ''
   saveBtn.disabled = disabledBtn;
   console.log(disabledBtn)};
-
-function starIdea() {
-
-}
 
 //function that changes the 'star' button when it is active or not active
 //When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.

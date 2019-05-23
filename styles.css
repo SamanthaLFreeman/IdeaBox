@@ -171,7 +171,7 @@ article {
 	background-color: transparent;
 	background-image: url(Images/star.svg);
 	background-size: auto;
-	height: 10px;
+	width: 30px;
 	background-repeat: no-repeat;
 }
 
