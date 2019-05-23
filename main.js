@@ -16,17 +16,20 @@ var bodyText = '';
 saveBtn.disabled = true;
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
-var bottomSection = document.querySelector('#js-bottom-section')
+var bottomSection = document.querySelector('#js-bottom-section');
+var deleteBtn = document.getElementById('js-delete');
 
 //Event Listeners
+bottomSection.addEventListener('click', removeCard);
+bottomSection.addEventListener('mouseover', removeCard);
 saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
 // saveBtn.addEventListener('click', saveIdea);
-
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
+
 
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
@@ -72,6 +75,13 @@ function disableBtns() {
 //It listens for a click on the delete button and then clears the card from the page
 // event target MIGHT be the best way to select the correct card- button click should delete the card from localStorage and MAYBE refresh the page w/ current info.
 //when there are no idea cards created, there should be a placeholder text that disappears upon clicking into the text field creating an empty text field
+function removeCard(e){
+  if (e.target.className === 'delete'){
+    e.target.parentElement.parentElement.remove();
+    }
+  }
+
+//hover change delete image to active
 
 
 
