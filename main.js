@@ -1,5 +1,5 @@
 // Global Variables
-var allIdeas = JSON.parse(window.localStorage.getItem("ideas")) || [];
+var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -36,6 +36,8 @@ function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	createNewCard(newIdea);
 	clearInputs();
+	console.log(allIdeas)
+	console.log(newIdea)
 	allIdeas.push(newIdea);
 	newIdea.saveToStorage(allIdeas);
     saveBtn.disabled = true;
@@ -67,7 +69,7 @@ function disableBtns() {
 
 // Toggles the star icon
 function toggleFavorite() {
-	Idea.toggleStar();
+	// Idea.toggleStar();
   var starButton = document.getElementById('favoriteBtn');
   starButton.classList.toggle('orangeStar');
 };
