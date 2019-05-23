@@ -35,6 +35,13 @@ class Idea {
     this.body = body; 
     window.localStorage.setItem("ideas", JSON.stringify(ideas));
   }
+
+  toggleStar () {
+    var ideas = JSON.parse(window.localStorage.getItem("ideas"));
+    this.star = !this.star;
+    ideas[this.id].star = this.star;
+    window.localStorage.setItem("ideas", JSON.stringify(ideas));
+  }
   
   static listIdeas () {
     return JSON.parse(window.localStorage.getItem("ideas"));
