@@ -170,12 +170,12 @@ article {
 .favorite {
 	background-color: transparent;
 	background-image: url(Images/star.svg);
+	background-repeat: no-repeat;
 	background-size: auto;
 	width: 30px;
-	background-repeat: no-repeat;
 }
 
-.orangeFavorite {
+.orangeStar {
 	background-image: url(Images/star-active.svg)
 }
 
