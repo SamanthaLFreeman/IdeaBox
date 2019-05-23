@@ -17,16 +17,19 @@ saveBtn.disabled = true;
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
+var deleteBtn = document.getElementById('js-delete');
 
 //Event Listeners
+bottomSection.addEventListener('click', removeCard);
+saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
-
 saveBtn.addEventListener('click', createNewCard);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 // ideaTitle.addEventListener('click', editIdeaCard);
+
 
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
@@ -88,13 +91,19 @@ function toggleFavorite() {
 
 //function to remove the card from the screen
 //It listens for a click on the delete button and then clears the card from the page
+// event target MIGHT be the best way to select the correct card- button click should delete the card from localStorage and MAYBE refresh the page w/ current info.
+//when there are no idea cards created, there should be a placeholder text that disappears upon clicking into the text field creating an empty text field
+function removeCard(e){
+  if (e.target.className === 'delete'){
+    e.target.parentElement.parentElement.remove();
+    }
+  }
+
+//hover change delete image to active
 
 
+
+//function that changes the ‘star’ button when it is active or not active
 //When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
-
-
-//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
-
-
-//function that changes the 'star' button when it is active or not active
+//The user should be able to ‘commit’ their changes by pressing ‘enter/return’ and by clicking outside the text field
 
