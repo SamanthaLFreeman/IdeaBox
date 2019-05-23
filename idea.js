@@ -1,21 +1,37 @@
 class Idea {
-  constuctor() {
-
+  constructor (title, body) {
+    this.setId();
+    this.title = title;
+    this.body = body;
+    this.star = false;
+    this.quality = 0;
+    this.saveToStorage();
   }
-
-  saveToStorage() {
-
+  
+  setId () {
+    var myId = window.localStorage.getItem("ideasId") || 0;
+    myId++;
+    this.id = myId;
+    window.localStorage.setItem("ideasId", myId);
   }
-
-  deleteFromStorage() {
-
+  
+  saveToStorage () {
+    var ideas = JSON.parse(window.localStorage.getItem("ideas")) || {};
+    ideas[this.id] = this;
+    window.localStorage.setItem("ideas", JSON.stringify(ideas));
   }
-
-  updateIdea() {
-
-  }
-
-  updateQuality() {
-    
+  
+  static listIdeas () {
+    return JSON.parse(window.localStorage.getItem("ideas"));
   }
 }
+
+
+
+
+
+
+
+
+
+
