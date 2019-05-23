@@ -1,21 +1,12 @@
 class Idea {
-  constructor (title, body) {
-    // this.id
-    this.setId();
+  constructor (title, body, star, id) {
+    this.id = id;
     this.title = title;
     this.body = body;
-    this.star = false;
+    this.star = star;
     this.quality = 0;
-    this.saveToStorage();
   };
 
-  setId () {
-    var myId = window.localStorage.getItem("ideasId") || 0;
-    myId++;
-    this.id = myId;
-    window.localStorage.setItem("ideasId", myId);
-  };
-  
   saveToStorage () {
     var ideas = JSON.parse(window.localStorage.getItem("ideas")) || {};
     ideas[this.id] = this;
@@ -64,7 +55,7 @@ class Idea {
     
   };
   
-  static listIdeas () {
-    return JSON.parse(window.localStorage.getItem("ideas"));
-  }
-};
+//   static listIdeas () {
+//     return JSON.parse(window.localStorage.getItem("ideas"));
+//   }
+// };
