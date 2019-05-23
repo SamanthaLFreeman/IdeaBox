@@ -7,7 +7,7 @@ class Idea {
     this.quality = 0;
     this.saveToStorage();
   }
-  
+
   setId () {
     var myId = window.localStorage.getItem("ideasId") || 0;
     myId++;
@@ -18,6 +18,12 @@ class Idea {
   saveToStorage () {
     var ideas = JSON.parse(window.localStorage.getItem("ideas")) || {};
     ideas[this.id] = this;
+    window.localStorage.setItem("ideas", JSON.stringify(ideas));
+  }
+
+  deleteFromStorage () {
+    var ideas = JSON.parse(window.localStorage.getItem("ideas"));
+    delete ideas[this.id];
     window.localStorage.setItem("ideas", JSON.stringify(ideas));
   }
   
