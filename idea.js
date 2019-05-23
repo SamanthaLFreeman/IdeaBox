@@ -43,6 +43,24 @@ class Idea {
     window.localStorage.setItem("ideas", JSON.stringify(ideas));
   }
   
+  updateQuality (vote) {
+    if (vote > 0) {
+      //Up vote
+      if (this.quality < 2) {
+        this.quality++;
+      }
+    } else {
+      // down vote
+      if (this.quality > 0) {
+        this.quality--;
+      }
+    }
+    var ideas = JSON.parse(window.localStorage.getItem("ideas"));
+    ideas[this.id].quality = this.quality;
+    window.localStorage.setItem("ideas", JSON.stringify(ideas));
+    
+  }
+  
   static listIdeas () {
     return JSON.parse(window.localStorage.getItem("ideas"));
   }
