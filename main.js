@@ -55,8 +55,8 @@ function createNewCard() {
       </div>
     </article>`
 )
-  	idea.listIdeas();
     clearInputs();
+  	idea.listIdeas();
     saveBtn.disabled = true;
 };
 
