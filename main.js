@@ -27,13 +27,6 @@ saveBtn.addEventListener('click', createNewCard);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
-// bottomSection.addEventListener('load', dontDoItTilISaySo);
-	// if e.target === '' e.target.classList)
-// // 
-// function dontDoItTilISaySo(){
-// 	console.log('yo')
-// }
-
 //When save is clicked a new card appears in the bottom section
 function createNewCard() {
   bottomSection.insertAdjacentHTML('afterbegin',
@@ -81,7 +74,6 @@ function disableBtns() {
   saveBtn.disabled = disabledBtn;
   console.log(disabledBtn)};
 
-//function that changes the 'star' button when it is active or not active
 //When a user clicks the title or body of an idea in the list, that text should become an editable text field, pre-populated with the existing idea title or body.
 //The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
