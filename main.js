@@ -1,4 +1,5 @@
 // Global Variables
+var allIdeas = JSON.parse(window.localStorage.getItem("ideas")) || [];
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -19,21 +20,29 @@ var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
 var deleteBtn = document.getElementById('js-delete');
+var starBtn = document.querySelector('#favoriteBtn')
 
 //Event Listeners
+// starBtn.addEventListener('click', toggleFavorite);
 bottomSection.addEventListener('click', removeCard);
-saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
-saveBtn.addEventListener('click', createNewCard);
+saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
+function instantiateIdea() {
+	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
+	createNewCard(newIdea);
+	clearInputs();
+	allIdeas.push(newIdea);
+	newIdea.saveToStorage(allIdeas);
+    saveBtn.disabled = true;
+};
+
 //When save is clicked a new card appears in the bottom section
-function createNewCard() {
-	var idea = new Idea (titleInput.value, bodyInput.value, Date.now());
-	console.log(idea)
+function createNewCard(idea) {
 	var template = document.getElementById('new-card-template');
 	var clone = template.content.cloneNode(true);
 	clone.getElementById('article-card').setAttribute('data-id', idea.id)
@@ -41,8 +50,6 @@ function createNewCard() {
 	clone.getElementById('js-idea-body').innerText = idea.body;
 	clone.getElementById('js-quality-value').innerText = 'Swill';
 	bottomSection.insertBefore(clone, bottomSection.firstChild);
-	clearInputs();
-    saveBtn.disabled = true;
 };
 
 //Clears the two input fields (add to new card function, so it clears after a card is created)
@@ -60,6 +67,7 @@ function disableBtns() {
 
 // Toggles the star icon
 function toggleFavorite() {
+	Idea.toggleStar();
   var starButton = document.getElementById('favoriteBtn');
   starButton.classList.toggle('orangeStar');
 };
