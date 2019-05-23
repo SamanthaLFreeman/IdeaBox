@@ -25,9 +25,10 @@ saveBtn.addEventListener('click', createNewCard);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
-// saveBtn.addEventListener('click', saveIdea);
+saveBtn.addEventListener('click', createNewCard);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
+// ideaTitle.addEventListener('click', editIdeaCard);
 
 
 //When save is clicked a new card appears in the bottom section
@@ -35,7 +36,8 @@ function createNewCard() {
   bottomSection.insertAdjacentHTML('afterbegin',
     `<article>
       <div class='top-card'> 
-        <img src='Images/star.svg' alt='star-icon' class='star' id='js-star' />
+        <button class='favorite' id='favoriteBtn' onclick='toggleFavorite()'>
+        </button>
         <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
       </div>
       <div class='body-card'> 
@@ -61,14 +63,31 @@ function createNewCard() {
 function clearInputs() {
   titleInput.value = '';
   bodyInput.value = '';
-}
+};
 
 //Lists for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
+  console.log(disabledBtn);
   var disabledBtn = titleInput.value === '' || bodyInput.value === ''
   saveBtn.disabled = disabledBtn;
-  console.log(disabledBtn)
 };
+
+function toggleFavorite() {
+  var starButton = document.getElementById('favoriteBtn');
+  starButton.classList.toggle('orangeStar');
+};
+
+// function editIdeaCard() {
+//   ideaTitle.createElement('textarea')
+// }
+
+// ideaTitle.addEventListener('click', editIdeaCard);
+
+
+
+// function editIdeaCard() {
+//   ideaTitle.createElement('textarea')
+// };
 
 //function to remove the card from the screen
 //It listens for a click on the delete button and then clears the card from the page
