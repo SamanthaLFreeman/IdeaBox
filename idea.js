@@ -50,4 +50,7 @@ class Idea {
     localStorage.setItem("ideas", JSON.stringify(ideas));
     
   };
+   static listIdeas () {
+    return JSON.parse(window.localStorage.getItem("ideas"));
+  }
 };
