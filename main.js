@@ -1,6 +1,5 @@
 // Global Variables
-// var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
-var allIdeas = [];
+var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -24,50 +23,29 @@ var bodyText = '';
 saveBtn.disabled = true;
 
 //Event Listeners
-// starBtn.addEventListener('click', toggleFavorite);
-bottomSection.addEventListener('click', removeCard);
+bottomSection.addEventListener('click', handleCardActions);
 // starredIdeasBtn.addEventListener('click', null);
 // newQualityBtn.addEventListener('click', null);
 // searchBtn.addEventListener('click', null);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
-// window.addEventListener('load', onLoad)
 
-function whatsUp() {
-  var ideas = JSON.parse(localStorage.getItem("ideas"));
-
-  for (var i = 0; i < ideas.length; i++) {
-    createNewCard(ideas[i]);
-  }
-}
-
-whatsUp();
-
-function onLoad() {
-for (var i = 0; i < allIdeas.length; i++) {
-	var newInstance = new Idea(allIdeas[i].title, allIdeas[i].body, allIdeas[i].id);
-	allIdeas.push(newInstance);
-  createNewCard(newInstance);
-}
-  
-  console.log(allIdeas);
-	// instantiateIdea();
-}
-
-onLoad();
-
-// for loop i < allIdeas.length
-// 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
-	// on page refresh - get array from localStorage, parse it & push into global array variable cards to persist on page
+function createCardsOnLoad(existingIdeas) {
+	existingIdeas.forEach(function(idea){
+		var newIdea = new Idea(idea.title, idea.body, Date.now());
+    	createNewCard(newIdea);
+	})
+};
+createCardsOnLoad(allIdeas);
 
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
-	createNewCard(newIdea);
 	clearInputs();
-  allIdeas.push(newIdea);
+    allIdeas.push(newIdea);
 	newIdea.saveToStorage();
   saveBtn.disabled = true;
+  createNewCard(newIdea);
 };
 
 //When save is clicked a new card appears in the bottom section
@@ -94,19 +72,34 @@ function disableBtns() {
   saveBtn.disabled = disabledBtn;
 };
 
+function findIdea(e) {
+	var id = Number(event.target.closest('#article-card').getAttribute('data-id'));
+	return allIdeas.find(function(idea) {
+		return idea.id === id
+	})
+};
+
 // Toggles the star icon
-function toggleFavorite() {
-	// Idea.toggleStar();
-  var starButton = document.getElementById('favoriteBtn');
-  starButton.classList.toggle('orangeStar');
+function toggleStar(e) {
+	var idea = findIdea(e)
+	idea.toggleStar()
+  // var starButton = document.getElementById('favoriteBtn');
+  // starButton.classList.toggle('orangeStar');
+};
+
+function handleCardActions(e){
+  if (e.target.className === 'delete'){
+	removeCard(e);
+  } else if (e.target.className === 'favorite') {
+  	toggleStar(e);
+  }
 };
 
 // Deletes a card from the window
 function removeCard(e){
-  if (e.target.className === 'delete'){
     e.target.parentElement.parentElement.remove();
-    }
 };
+
 
 // function returnText() {
 // 	event.keyCode === 13 
