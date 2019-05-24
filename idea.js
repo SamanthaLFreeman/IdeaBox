@@ -13,7 +13,7 @@ class Idea {
 
   deleteFromStorage () {
     var ideas = JSON.parse(localStorage.getItem("ideas"));
-    localStorage.setItem("ideas", JSON.stringify(ideas));
+    localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
   updateIdea(title, body) {
