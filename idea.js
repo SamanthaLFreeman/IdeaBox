@@ -7,7 +7,7 @@ class Idea {
     this.quality = 0;
   };
 
-  saveToStorage () {
+  saveToStorage() {
     localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
