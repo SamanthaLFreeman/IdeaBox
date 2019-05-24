@@ -13,14 +13,14 @@ var searchBtn = document.querySelector('#js-search-btn')
 var searchInput = document.querySelector('#js-search-input');
 var ideaCard = document.querySelector('#js-idea-card');
 var bottomSection = document.querySelector('#js-bottom-section');
-var titleText = '';
-var bodyText = '';
-saveBtn.disabled = true;
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
 var deleteBtn = document.getElementById('js-delete');
 var starBtn = document.querySelector('#favoriteBtn')
+var titleText = '';
+var bodyText = '';
+saveBtn.disabled = true;
 
 //Event Listeners
 // starBtn.addEventListener('click', toggleFavorite);
@@ -31,14 +31,25 @@ bottomSection.addEventListener('click', removeCard);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
+window.addEventListener('load', onLoad)
+
+function onLoad(e) {
+	e.preventDefault();
+for (var i= 0; i < allIdeas.length; i++) {
+	var newInstance = new Idea(allIdeas[i]);
+	allIdeas.push(newInstance);
+	instantiateIdea();
+}
+
+// for loop i < allIdeas.length
+// 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
+	// on page refresh - get array from localStorage, parse it & push into global array variable cards to persist on page
+};
 
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	createNewCard(newIdea);
 	clearInputs();
-	console.log(allIdeas)
-	console.log(newIdea)
-	allIdeas.push(newIdea);
 	newIdea.saveToStorage(allIdeas);
     saveBtn.disabled = true;
 };
