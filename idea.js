@@ -11,11 +11,14 @@ class Idea {
     localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
-  deleteFromStorage () {
-    var ideas = JSON.parse(localStorage.getItem("ideas"));
-    localStorage.setItem("ideas", JSON.stringify(ideas));
-  };
-
+  deleteFromStorage (idea) {
+  var indexFound = ideas.findIndex(function(){return idea.id === idea});
+  delete ideas[indexFound];
+  window.localStorage.setItem("ideas", JSON.stringify(ideas));
+  }
+  
+  //main js set an event listener to delete the card,
+  // in the fn deleteFromStorage (e.target.dataset.id)
   updateIdea(title, body) {
     var ideas = JSON.parse(localStorage.getItem("ideas"));
     this.title = title;
