@@ -1,5 +1,6 @@
 // Global Variables
-var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
+// var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
+var allIdeas = [];
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -31,27 +32,42 @@ bottomSection.addEventListener('click', removeCard);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
-window.addEventListener('load', onLoad)
+// window.addEventListener('load', onLoad)
 
-function onLoad(e) {
-	e.preventDefault();
-for (var i= 0; i < allIdeas.length; i++) {
-	var newInstance = new Idea(allIdeas[i]);
-	allIdeas.push(newInstance);
-	instantiateIdea();
+function whatsUp() {
+  var ideas = JSON.parse(localStorage.getItem("ideas"));
+
+  for (var i = 0; i < ideas.length; i++) {
+    createNewCard(ideas[i]);
+  }
 }
+
+whatsUp();
+
+function onLoad() {
+for (var i = 0; i < allIdeas.length; i++) {
+	var newInstance = new Idea(allIdeas[i].title, allIdeas[i].body, allIdeas[i].id);
+	allIdeas.push(newInstance);
+  createNewCard(newInstance);
+}
+  
+  console.log(allIdeas);
+	// instantiateIdea();
+}
+
+onLoad();
 
 // for loop i < allIdeas.length
 // 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	// on page refresh - get array from localStorage, parse it & push into global array variable cards to persist on page
-};
 
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	createNewCard(newIdea);
 	clearInputs();
-	newIdea.saveToStorage(allIdeas);
-    saveBtn.disabled = true;
+  allIdeas.push(newIdea);
+	newIdea.saveToStorage();
+  saveBtn.disabled = true;
 };
 
 //When save is clicked a new card appears in the bottom section
