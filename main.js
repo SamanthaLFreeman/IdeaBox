@@ -16,7 +16,6 @@ var bottomSection = document.querySelector('#js-bottom-section');
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
-var deleteBtn = document.getElementById('js-delete');
 var starBtn = document.querySelector('#favoriteBtn')
 var titleText = '';
 var bodyText = '';
@@ -24,9 +23,6 @@ saveBtn.disabled = true;
 
 //Event Listeners
 bottomSection.addEventListener('click', handleCardActions);
-// starredIdeasBtn.addEventListener('click', null);
-// newQualityBtn.addEventListener('click', null);
-// searchBtn.addEventListener('click', null);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
@@ -67,14 +63,13 @@ function clearInputs() {
 
 //Lists for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
-  console.log(disabledBtn);
   var disabledBtn = titleInput.value === '' || bodyInput.value === ''
   saveBtn.disabled = disabledBtn;
 };
 
 function findIdea(e) {
-	var id = Number(event.target.closest('#article-card').getAttribute('data-id'));
-	return allIdeas.find(function(idea) {
+	var id = Number(e.target.closest('#article-card').getAttribute('data-id'));
+	return allIdeas.find(function(idea) {	
 		return idea.id === id
 	})
 };
@@ -98,6 +93,8 @@ function handleCardActions(e){
 // Deletes a card from the window
 function removeCard(e){
     e.target.parentElement.parentElement.remove();
+	var idea = findIdea(e);
+	idea.deleteFromStorage();
 };
 
 

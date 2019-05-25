@@ -17,10 +17,17 @@ class Idea {
   };
 
   deleteFromStorage (idea) {
- var indexFound = ideas.findIndex(function(){return idea.id === idea});
- delete ideas[indexFound];
- window.localStorage.setItem("ideas", JSON.stringify(ideas));
- };
+  var indexFound = allIdeas.indexOf(this);
+  delete allIdeas[indexFound];
+  // localStorage.removeItem("ideas");
+  
+  }
+
+
+    
+ // delete allIdeas[indexFound];
+ // window.localStorage.setItem("ideas", JSON.stringify(allIdeas));
+ // };
  //main js set an event listener to delete the card,
  // in the fn deleteFromStorage (e.target.dataset.id)
 
