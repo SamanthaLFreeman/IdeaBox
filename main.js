@@ -42,7 +42,7 @@ createCardsOnLoad(allIdeas);
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	clearInputs();
-    allIdeas.push(newIdea);
+  allIdeas.push(newIdea);
 	newIdea.saveToStorage();
   saveBtn.disabled = true;
   createNewCard(newIdea);
@@ -52,7 +52,7 @@ function instantiateIdea() {
 function createNewCard(idea) {
 	var template = document.getElementById('new-card-template');
 	var clone = template.content.cloneNode(true);
-	clone.getElementById('article-card').setAttribute('data-id', idea.id)
+	clone.getElementById('article-card').setAttribute('data-id', idea.id);
 	clone.getElementById('js-idea-title').innerText = idea.title;
 	clone.getElementById('js-idea-body').innerText = idea.body;
 	clone.getElementById('js-quality-value').innerText = 'Swill';
@@ -67,24 +67,23 @@ function clearInputs() {
 
 //Lists for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
-  console.log(disabledBtn);
-  var disabledBtn = titleInput.value === '' || bodyInput.value === ''
+  var disabledBtn = titleInput.value === '' || bodyInput.value === '';
   saveBtn.disabled = disabledBtn;
 };
 
 function findIdea(e) {
 	var id = Number(event.target.closest('#article-card').getAttribute('data-id'));
 	return allIdeas.find(function(idea) {
-		return idea.id === id
+		return idea.id === id;
 	})
 };
 
 // Toggles the star icon
 function toggleStar(e) {
 	var idea = findIdea(e)
-	idea.toggleStar()
-  // var starButton = document.getElementById('favoriteBtn');
-  // starButton.classList.toggle('orangeStar');
+	idea.updateIdea()
+  var starButton = document.getElementById('favoriteBtn');
+  starButton.classList.toggle('orangeStar');
 };
 
 function handleCardActions(e){
@@ -97,7 +96,9 @@ function handleCardActions(e){
 
 // Deletes a card from the window
 function removeCard(e){
-    e.target.parentElement.parentElement.remove();
+    var deleteIdea = e.target.dataset.id;
+    // var deleteIdea = e.target.parentElement.parentElement.remove();
+    deleteIdea.deleteFromStorage();
 };
 
 
