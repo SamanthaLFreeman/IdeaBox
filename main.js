@@ -33,11 +33,31 @@ bodyInput.addEventListener('keyup', disableBtns);
 
 function createCardsOnLoad(existingIdeas) {
 	existingIdeas.forEach(function(idea){
-		var newIdea = new Idea(idea.title, idea.body, Date.now());
+    console.log(idea);
+		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
     	createNewCard(newIdea);
 	})
 };
 createCardsOnLoad(allIdeas);
+
+//Pass in the array of objects
+//Find the object I want by the id - find the index in the array
+//Pass the array and the index to the method (idea.js)
+//In the method - access the object by its id in the array
+
+function findTheIndex(id) {
+  var findTheIndex = allIdeas.findIndex(function(card) {
+    // console.log(card.id);
+    // console.log(id)
+    if (card.id === parseInt(id)) {
+      return card;
+    }
+  })
+  console.log(findTheIndex);
+  console.log(allIdeas[findTheIndex])
+}
+
+
 
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
@@ -79,25 +99,34 @@ function findIdea(e) {
 };
 
 // Toggles the star icon
-function toggleStar(e) {
-	var idea = findIdea(e)
-	idea.updateIdea()
-  var starButton = document.getElementById('favoriteBtn');
-  starButton.classList.toggle('orangeStar');
+function toggleStar(id) {
+	var idea = findIdea(id)
+  // console.log(idea);
+  findTheIndex(id)
+  // var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
+  // newIdea.updateIdea();
+  //change the boolean of the star
+  //save changed value to local storage
+  //when the card value changes, so does the image
+	// idea.updateIdea()
+  // var starButton = document.getElementById('favoriteBtn');
+  // starButton.classList.toggle('orangeStar');
+
 };
 
 function handleCardActions(e){
   if (e.target.className === 'delete'){
-	removeCard(e);
+	  removeCard(e);
   } else if (e.target.className === 'favorite') {
-  	toggleStar(e);
+    // console.log(e.target.parentNode.parentNode.dataset.id)
+  	toggleStar(e.target.parentNode.parentNode.dataset.id);
   }
 };
 
 // Deletes a card from the window
 function removeCard(e){
-    var deleteIdea = e.target.dataset.id;
-    // var deleteIdea = e.target.parentElement.parentElement.remove();
+    // var deleteIdea = e.target.dataset.id;
+    var deleteIdea = e.target.parentElement.parentElement.remove();
     deleteIdea.deleteFromStorage();
 };
 
