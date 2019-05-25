@@ -1,9 +1,9 @@
 class Idea {
-  constructor (title, body, id) {
+  constructor (title, body, id, star) {
     this.id = id;
     this.title = title;
     this.body = body;
-    this.star = false;
+    this.star = this.star || false;
     this.quality = 0;
   };
 
@@ -11,24 +11,24 @@ class Idea {
     localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
-  toggleStar () {
-    var ideas = JSON.parse(localStorage.getItem("ideas"));
-    this.star = !this.star;
-  };
-
-  deleteFromStorage (idea) {
- var indexFound = ideas.findIndex(function(){return idea.id === idea});
- delete ideas[indexFound];
- window.localStorage.setItem("ideas", JSON.stringify(ideas));
+  deleteFromStorage() {
+    var indexFound = allIdeas.findIndex(function(){return idea.id === idea});
+    delete allIdeas[indexFound];
+    localStorage.setItem("ideas", JSON.stringify(allIdeas));
  };
  //main js set an event listener to delete the card,
  // in the fn deleteFromStorage (e.target.dataset.id)
 
-  updateIdea(title, body) {
-    var ideas = JSON.parse(localStorage.getItem("ideas"));
+  updateIdea(title, body, id, star) {
+    console.log(allIdeas);
+    // var ideas = JSON.parse(localStorage.getItem("ideas"));
+    this.star = !this.star;
+    console.log(this.star);
     this.title = title;
-    this.body = body; 
-    localStorage.setItem("ideas", JSON.stringify(ideas));
+    this.body = body;
+    console.log(allIdeas);
+    // localStorage.setItem("ideas", JSON.stringify(ideas));
+    localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
   // no window.localStorage

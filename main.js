@@ -33,16 +33,36 @@ bodyInput.addEventListener('keyup', disableBtns);
 
 function createCardsOnLoad(existingIdeas) {
 	existingIdeas.forEach(function(idea){
-		var newIdea = new Idea(idea.title, idea.body, Date.now());
+    console.log(idea);
+		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
     	createNewCard(newIdea);
 	})
 };
 createCardsOnLoad(allIdeas);
 
+//Pass in the array of objects
+//Find the object I want by the id - find the index in the array
+//Pass the array and the index to the method (idea.js)
+//In the method - access the object by its id in the array
+
+function findTheIndex(id) {
+  var findTheIndex = allIdeas.findIndex(function(card) {
+    // console.log(card.id);
+    // console.log(id)
+    if (card.id === parseInt(id)) {
+      return card;
+    }
+  })
+  console.log(findTheIndex);
+  console.log(allIdeas[findTheIndex])
+}
+
+
+
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	clearInputs();
-    allIdeas.push(newIdea);
+  allIdeas.push(newIdea);
 	newIdea.saveToStorage();
   saveBtn.disabled = true;
   createNewCard(newIdea);
@@ -52,7 +72,7 @@ function instantiateIdea() {
 function createNewCard(idea) {
 	var template = document.getElementById('new-card-template');
 	var clone = template.content.cloneNode(true);
-	clone.getElementById('article-card').setAttribute('data-id', idea.id)
+	clone.getElementById('article-card').setAttribute('data-id', idea.id);
 	clone.getElementById('js-idea-title').innerText = idea.title;
 	clone.getElementById('js-idea-body').innerText = idea.body;
 	clone.getElementById('js-quality-value').innerText = 'Swill';
@@ -67,37 +87,47 @@ function clearInputs() {
 
 //Lists for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
-  console.log(disabledBtn);
-  var disabledBtn = titleInput.value === '' || bodyInput.value === ''
+  var disabledBtn = titleInput.value === '' || bodyInput.value === '';
   saveBtn.disabled = disabledBtn;
 };
 
 function findIdea(e) {
 	var id = Number(event.target.closest('#article-card').getAttribute('data-id'));
 	return allIdeas.find(function(idea) {
-		return idea.id === id
+		return idea.id === id;
 	})
 };
 
 // Toggles the star icon
-function toggleStar(e) {
-	var idea = findIdea(e)
-	idea.toggleStar()
+function toggleStar(id) {
+	var idea = findIdea(id)
+  // console.log(idea);
+  findTheIndex(id)
+  // var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
+  // newIdea.updateIdea();
+  //change the boolean of the star
+  //save changed value to local storage
+  //when the card value changes, so does the image
+	// idea.updateIdea()
   // var starButton = document.getElementById('favoriteBtn');
   // starButton.classList.toggle('orangeStar');
+
 };
 
 function handleCardActions(e){
   if (e.target.className === 'delete'){
-	removeCard(e);
+	  removeCard(e);
   } else if (e.target.className === 'favorite') {
-  	toggleStar(e);
+    // console.log(e.target.parentNode.parentNode.dataset.id)
+  	toggleStar(e.target.parentNode.parentNode.dataset.id);
   }
 };
 
 // Deletes a card from the window
 function removeCard(e){
-    e.target.parentElement.parentElement.remove();
+    // var deleteIdea = e.target.dataset.id;
+    var deleteIdea = e.target.parentElement.parentElement.remove();
+    deleteIdea.deleteFromStorage();
 };
 
 
