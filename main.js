@@ -33,6 +33,7 @@ function createCardsOnLoad() {
 		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
     newArray.push(newIdea);
     createNewCard(newIdea);
+
 	})
   allIdeas = newArray;
 };
@@ -56,6 +57,23 @@ function findTheIndex(id) {
 }
 
 
+
+//Pass in the array of objects
+//Find the object I want by the id - find the index in the array
+//Pass the array and the index to the method (idea.js)
+//In the method - access the object by its id in the array
+
+function findTheIndex(id) {
+  var findTheIndex = allIdeas.findIndex(function(card) {
+    // console.log(card.id);
+    // console.log(id)
+    if (card.id === parseInt(id)) {
+      return card;
+    }
+  })
+  console.log(findTheIndex);
+  console.log(allIdeas[findTheIndex])
+};
 
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
@@ -89,9 +107,20 @@ function disableBtns() {
   saveBtn.disabled = disabledBtn;
 };
 
-function findIdea(e) {
 
-	var id = Number(e.target.closest('#article-card').getAttribute('data-id'));
+function toggleFavorite() {
+  var starButton = document.getElementById('favoriteBtn');
+  starButton.classList.add('orangeStar');
+};
+
+function editIdeaCard() {
+	var editText = document.querySelectorAll('#js-idea-text');
+	for (var i = 0; i < editText.length; i++) {
+	editText.createElement('textarea')
+	}
+};
+
+function findIdea(id) {
 	return allIdeas.find(function(idea) {	
 		return idea.id === id
 	})
@@ -100,7 +129,6 @@ function findIdea(e) {
 // Toggles the star icon
 function toggleStar(id) {
 	var idea = findIdea(id)
-  // console.log(idea);
   findTheIndex(id)
   // var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
   // newIdea.updateIdea();
@@ -150,6 +178,5 @@ function removeCard(e){
 
 //hover change delete image to active
 
-//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
-// Tell the DOM that when the page loads retrieve the saved stringified object
+//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
