@@ -48,7 +48,7 @@ function findTheIndex(id) {
     // console.log(card.id);
     // console.log(id)
     if (card.id === parseInt(id)) {
-      // return card;
+      return card;
     }
   })
   console.log(findTheIndex);
@@ -56,14 +56,13 @@ function findTheIndex(id) {
 }
 
 
-
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
-	clearInputs();
+	  clearInputs();
     allIdeas.push(newIdea);
-	newIdea.saveToStorage(allIdeas);
+	  newIdea.saveToStorage(allIdeas);
   	saveBtn.disabled = true;
-  	createNewCard(newIdea)
+  	createNewCard(newIdea);
 };
 
 //When save is clicked a new card appears in the bottom section
@@ -117,7 +116,6 @@ function handleCardActions(e){
   if (e.target.className === 'delete'){
 	  removeCard(e);
   } else if (e.target.className === 'favorite') {
-    // console.log(e.target.parentNode.parentNode.dataset.id)
   	toggleStar(e.target.parentNode.parentNode.dataset.id);
   }
 };
