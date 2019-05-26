@@ -27,14 +27,16 @@ saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
-function createCardsOnLoad(existingIdeas) {
-	existingIdeas.forEach(function(idea){
-    console.log(idea);
+function createCardsOnLoad() {
+	var newArray = [];
+  allIdeas.forEach(function(idea){
 		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
-    	createNewCard(newIdea);
+    newArray.push(newIdea);
+    createNewCard(newIdea);
 	})
+  allIdeas = newArray;
 };
-createCardsOnLoad(allIdeas);
+createCardsOnLoad();
 
 //Pass in the array of objects
 //Find the object I want by the id - find the index in the array
@@ -46,7 +48,7 @@ function findTheIndex(id) {
     // console.log(card.id);
     // console.log(id)
     if (card.id === parseInt(id)) {
-      return card;
+      // return card;
     }
   })
   console.log(findTheIndex);
