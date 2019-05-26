@@ -29,24 +29,13 @@ class Idea {
     this.saveToStorage(allIdeas);
   }
   }
-    
-<<<<<<< HEAD
-  updateIdea(title, body) {
-    var ideas = JSON.parse(localStorage.getItem("ideas"));
-=======
- // delete allIdeas[indexFound];
- // window.localStorage.setItem("ideas", JSON.stringify(allIdeas));
- // };
-
- //main js set an event listener to delete the card,
- // in the fn deleteFromStorage (e.target.dataset.id)
+  
 
   updateIdea(title, body, id, star) {
     console.log(allIdeas);
     // var ideas = JSON.parse(localStorage.getItem("ideas"));
     this.star = !this.star;
     console.log(this.star);
->>>>>>> fb5174f0faf1ce5ea1e7e8326edb55d614c82653
     this.title = title;
     this.body = body;
     console.log(allIdeas);
