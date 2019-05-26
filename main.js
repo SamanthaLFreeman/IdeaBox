@@ -27,14 +27,36 @@ saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
-function createCardsOnLoad(existingIdeas) {
-	existingIdeas.forEach(function(idea){
-    console.log(idea);
+function createCardsOnLoad() {
+	var newArray = [];
+  allIdeas.forEach(function(idea){
 		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
-    	createNewCard(newIdea);
+    newArray.push(newIdea);
+    createNewCard(newIdea);
+
 	})
+  allIdeas = newArray;
 };
-createCardsOnLoad(allIdeas);
+createCardsOnLoad();
+
+//Pass in the array of objects
+//Find the object I want by the id - find the index in the array
+//Pass the array and the index to the method (idea.js)
+//In the method - access the object by its id in the array
+
+function findTheIndex(id) {
+  var findTheIndex = allIdeas.findIndex(function(card) {
+    // console.log(card.id);
+    // console.log(id)
+    if (card.id === parseInt(id)) {
+      // return card;
+    }
+  })
+  console.log(findTheIndex);
+  console.log(allIdeas[findTheIndex])
+}
+
+
 
 //Pass in the array of objects
 //Find the object I want by the id - find the index in the array
@@ -85,6 +107,7 @@ function disableBtns() {
   saveBtn.disabled = disabledBtn;
 };
 
+
 function toggleFavorite() {
   var starButton = document.getElementById('favoriteBtn');
   starButton.classList.add('orangeStar');
@@ -106,8 +129,7 @@ function findIdea(id) {
 // Toggles the star icon
 function toggleStar(id) {
 	var idea = findIdea(id)
-  // console.log(idea)=
-  var selectedCard = findTheIndex(id)
+  findTheIndex(id)
   // var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
   // newIdea.updateIdea();
   //change the boolean of the star
