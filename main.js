@@ -58,10 +58,10 @@ function findTheIndex(id) {
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	clearInputs();
-  allIdeas.push(newIdea);
-	newIdea.saveToStorage();
-  saveBtn.disabled = true;
-  createNewCard(newIdea);
+    allIdeas.push(newIdea);
+	newIdea.saveToStorage(allIdeas);
+  	saveBtn.disabled = true;
+  	createNewCard(newIdea)
 };
 
 //When save is clicked a new card appears in the bottom section

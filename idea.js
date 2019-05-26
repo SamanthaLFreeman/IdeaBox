@@ -7,7 +7,8 @@ class Idea {
     this.quality = 0;
   };
 
-  saveToStorage() {
+  saveToStorage(allIdeas) {
+    console.log(allIdeas);
     localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
@@ -20,18 +21,15 @@ class Idea {
   deleteFromStorage (idea) {
   var indexFound = allIdeas.indexOf(this);
   delete allIdeas[indexFound];
-  // localStorage.removeItem("ideas");
-  
+  console.log(this);
+  if (this === undefined) {
+    allIdeas = [];
+    localStorage.clear();
+  } else {
+    this.saveToStorage(allIdeas);
   }
-
-
-    
- // delete allIdeas[indexFound];
- // window.localStorage.setItem("ideas", JSON.stringify(allIdeas));
- // };
-
- //main js set an event listener to delete the card,
- // in the fn deleteFromStorage (e.target.dataset.id)
+  }
+  
 
   updateIdea(title, body, id, star) {
     console.log(allIdeas);
