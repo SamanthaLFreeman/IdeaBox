@@ -35,7 +35,7 @@ bodyInput.addEventListener('keyup', disableBtns);
 // the two values will be saved to local storage
 function saveEditTitle(e) {
 	console.log(e)
-	if (e.keyCode === 13){
+	if (e.keyCode === 13 || e.type === 'blur') {
 	var newValue = e.target.innerText;
 	var cardId = e.path[2].attributes[1].value
 	var ideaToEdit = allIdeas.find(function(idea){
@@ -48,7 +48,7 @@ function saveEditTitle(e) {
 
 function saveEditBody(e) {
 	console.log(e)
-	if (e.keyCode === 13){
+	if (e.keyCode === 13 || e.type === 'blur') {
 	var newValue = e.target.innerText;
 	var cardId = e.path[2].attributes[1].value
 	var ideaToEdit = allIdeas.find(function(idea){
@@ -99,10 +99,10 @@ function createNewCard(idea) {
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
 	clone.getElementById('js-idea-title').innerText = idea.title;
 	clone.getElementById('js-idea-title').addEventListener('keyup', saveEditTitle);
-	// clone.getElementById('js-idea-title').addEventListener('click', saveEdits);
+	clone.getElementById('js-idea-title').addEventListener('blur', saveEditTitle);
 	clone.getElementById('js-idea-body').innerText = idea.body;
 	clone.getElementById('js-idea-body').addEventListener('keyup', saveEditBody);
-	// clone.getElementById('js-idea-body').addEventListener('click', saveEdits);
+	clone.getElementById('js-idea-body').addEventListener('blur', saveEditBody);
 	clone.getElementById('js-quality-value').innerText = 'Swill';
 	bottomSection.insertBefore(clone, bottomSection.firstChild);
 };
