@@ -23,20 +23,27 @@ nav {
 }
 
 h1 {
-	font-size: 24px;
-	font-weight: 500;
+	font-size: 1.5em;
+	font-weight: 530;
 	margin: 10px 10px;
 }
 
 h2 {
 	color: #BFBFDD;
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: bold;
 	margin: 10px 10px;
 }
 
 li {
+	font-weight: 300;
 	margin: 10px 10px;
+	padding: 5px;
+}
+
+li:active {
+	background-color: #D14119;
+	border-left: 4px #F58E72 solid;
 }
 
 .nav-border {
@@ -47,7 +54,7 @@ li {
 	background-color: #5356A4;
 	border: 1px solid #353567;
 	color: #E9E9F3;
-	font-size: 16px;
+	font-size: 1.2em;
 	font-weight: 500;
 	margin: 20px 10px 20px 10px;
 	padding: 5px;
@@ -63,6 +70,7 @@ li {
 .new-quality-input {
 	margin-top: 10px;
 	padding: 10px;
+	border: #353567;
 }
 /******TOP SECTION*****/
 
@@ -132,10 +140,10 @@ li {
 }
 
 .save-btn {
-	background-color: #1F1F3D;
+	background-color: #353567;
 	border: 1px solid #A9AAD2;
 	color: #FFF;
-	font-size: 15px;
+	font-size: 1.2em;
 	font-weight: 600;
 	padding: 10px;
 }
