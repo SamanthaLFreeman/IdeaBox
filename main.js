@@ -9,14 +9,15 @@ var newQualityBtn = document.querySelector('#js-new-quality-btn');
 var titleInput = document.querySelector('#js-title-input');
 var bodyInput = document.querySelector('#js-body-input');
 var saveBtn = document.querySelector('#js-save-btn');
-var searchBtn = document.querySelector('#js-search-btn')
+var searchBtn = document.querySelector('#js-search-btn');
 var searchInput = document.querySelector('#js-search-input');
 var ideaCard = document.querySelector('#js-idea-card');
 var bottomSection = document.querySelector('#js-bottom-section');
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
-var starBtn = document.querySelector('#favoriteBtn')
+var starBtn = document.querySelector('#favoriteBtn');
+var ideaText = document.querySelector('.idea-text');
 var titleText = '';
 var bodyText = '';
 saveBtn.disabled = true;
@@ -26,6 +27,37 @@ bottomSection.addEventListener('click', handleCardActions);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
+
+// access cards in local storage and take value from 
+// when the user clicks out of or hits the enter button whilst in the idea card text area,
+// grab the text changes from both inputs
+// grab the 
+// the two values will be saved to local storage
+function saveEditTitle(e) {
+	console.log(e)
+	if (e.keyCode === 13){
+	var newValue = e.target.innerText;
+	var cardId = e.path[2].attributes[1].value
+	var ideaToEdit = allIdeas.find(function(idea){
+		return cardId == idea.id 
+	})
+	ideaToEdit.title = newValue
+	}
+	ideaToEdit.saveToStorage(allIdeas);
+};
+
+function saveEditBody(e) {
+	console.log(e)
+	if (e.keyCode === 13){
+	var newValue = e.target.innerText;
+	var cardId = e.path[2].attributes[1].value
+	var ideaToEdit = allIdeas.find(function(idea){
+		return cardId == idea.id 
+	})
+	ideaToEdit.body = newValue;
+	}
+	ideaToEdit.saveToStorage(allIdeas);
+};
 
 function createCardsOnLoad() {
 	var newArray = [];
@@ -46,33 +78,9 @@ createCardsOnLoad();
 
 function findTheIndex(id) {
   var findTheIndex = allIdeas.findIndex(function(card) {
-    // console.log(card.id);
-    // console.log(id)
     if (card.id === parseInt(id)) {
-      // return card;
     }
   })
-  console.log(findTheIndex);
-  console.log(allIdeas[findTheIndex])
-}
-
-
-
-//Pass in the array of objects
-//Find the object I want by the id - find the index in the array
-//Pass the array and the index to the method (idea.js)
-//In the method - access the object by its id in the array
-
-function findTheIndex(id) {
-  var findTheIndex = allIdeas.findIndex(function(card) {
-    // console.log(card.id);
-    // console.log(id)
-    if (card.id === parseInt(id)) {
-      return card;
-    }
-  })
-  console.log(findTheIndex);
-  console.log(allIdeas[findTheIndex])
 };
 
 function instantiateIdea() {
@@ -90,7 +98,11 @@ function createNewCard(idea) {
 	var clone = template.content.cloneNode(true);
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
 	clone.getElementById('js-idea-title').innerText = idea.title;
+	clone.getElementById('js-idea-title').addEventListener('keyup', saveEditTitle);
+	// clone.getElementById('js-idea-title').addEventListener('click', saveEdits);
 	clone.getElementById('js-idea-body').innerText = idea.body;
+	clone.getElementById('js-idea-body').addEventListener('keyup', saveEditBody);
+	// clone.getElementById('js-idea-body').addEventListener('click', saveEdits);
 	clone.getElementById('js-quality-value').innerText = 'Swill';
 	bottomSection.insertBefore(clone, bottomSection.firstChild);
 };
@@ -106,7 +118,6 @@ function disableBtns() {
   var disabledBtn = titleInput.value === '' || bodyInput.value === '';
   saveBtn.disabled = disabledBtn;
 };
-
 
 function toggleFavorite() {
   var starButton = document.getElementById('favoriteBtn');
@@ -145,7 +156,6 @@ function handleCardActions(e){
   if (e.target.className === 'delete'){
 	  removeCard(e);
   } else if (e.target.className === 'favorite') {
-    // console.log(e.target.parentNode.parentNode.dataset.id)
   	toggleStar(e.target.parentNode.parentNode.dataset.id);
   }
 };
@@ -156,14 +166,6 @@ function removeCard(e){
 	var idea = findIdea(e);
 	idea.deleteFromStorage();
 };
-
-
-// function returnText() {
-// 	event.keyCode === 13 
-// 		console.log('13')
-// };
-// ideaBody.addEventListener('blur', );
-// event.keyCode === 13
 
 // attempts to connect idea.js and main.js
 // Idea.listIdeas();
