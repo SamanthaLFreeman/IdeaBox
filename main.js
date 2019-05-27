@@ -46,13 +46,15 @@ function saveEdit(e) {
 function createCardsOnLoad() {
 	var newArray = [];
   allIdeas.forEach(function(idea){
+
 		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
     newArray.push(newIdea);
     createNewCard(newIdea);
-
 	})
+
   allIdeas = newArray;
 };
+
 createCardsOnLoad();
 
 //Pass in the array of objects
@@ -66,8 +68,7 @@ function findTheIndex(id) {
       return card;
     }
   })
-  console.log(findTheIndex);
-  console.log(allIdeas[findTheIndex])
+  return findTheIndex;
 };
 
 
@@ -84,7 +85,9 @@ function instantiateIdea() {
 function createNewCard(idea) {
 	var template = document.getElementById('new-card-template');
 	var clone = template.content.cloneNode(true);
+  var star = idea.star ? 'Images/star-active.svg' : 'Images/star.svg';
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
+  clone.getElementById('favoriteBtn').setAttribute('src', star);
 	clone.getElementById('js-idea-title').innerText = idea.title;
 	clone.getElementById('js-idea-title').addEventListener('keyup', saveEdit);
 	clone.getElementById('js-idea-title').addEventListener('blur', saveEdit);
@@ -126,26 +129,43 @@ function findIdea(id) {
 };
 
 // Toggles the star icon
-function toggleStar(id) {
-	var idea = findIdea(id)
-  findTheIndex(id)
-  // var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
-  // newIdea.updateIdea();
-  //change the boolean of the star
-  //save changed value to local storage
-  //when the card value changes, so does the image
-	// idea.updateIdea()
-  // var starButton = document.getElementById('favoriteBtn');
-  // starButton.classList.toggle('orangeStar');
+function toggleStar(e, id) {
+	// var idea = parseInt(id);
+  var foundIndex = findTheIndex(id);
+  console.log(foundIndex);
+  allIdeas[foundIndex].updateIdea();
+  allIdeas[foundIndex].saveToStorage(allIdeas);
+  // changeStarImage(id);
+  
+  var fav = e.target;
+  var star = allIdeas[foundIndex].star;
+  console.log(star);
+  if (star === true) {
+    e.target.setAttribute('src', 'Images/star-active.svg');
+  } else {
+    e.target.setAttribute('src', 'Images/star.svg');
+  }
 
 };
+
+// function changeStarImage(id) {
+//   var fav = e.target;
+//   var foundIndex = findTheIndex(id);
+//   var star = allIdeas[foundIndex].star;
+//   console.log(star);
+//   if (star === true) {
+//     e.target.setAttribute('src', 'Images/star-active.svg');
+//   } else {
+//     e.target.setAttribute('src', 'Images/star.svg');
+//   }
+// }
 
 function handleCardActions(e){
   if (e.target.className === 'delete'){
 	  removeCard(e);
   } else if (e.target.className === 'favorite') {
-  	toggleStar(e.target.parentNode.parentNode.dataset.id);
-  }
+  	toggleStar(e, e.target.parentNode.parentNode.dataset.id);
+     }
 };
 
 // Deletes a card from the window

@@ -3,7 +3,7 @@ class Idea {
     this.id = id;
     this.title = title;
     this.body = body;
-    this.star = this.star || false;
+    this.star = star || false;
     this.quality = 0;
   };
 
@@ -29,18 +29,22 @@ class Idea {
     this.saveToStorage(allIdeas);
      }
   }
-  
-  updateIdea(title, body, id, star) {
-    console.log(allIdeas);
-    // var ideas = JSON.parse(localStorage.getItem("ideas"));
+
+  updateIdea() {
     this.star = !this.star;
-    console.log(this.star);
-    this.title = title;
-    this.body = body;
-    console.log(allIdeas);
-    // localStorage.setItem("ideas", JSON.stringify(ideas));
-    localStorage.setItem("ideas", JSON.stringify(allIdeas));
-  };
+  }
+  
+  // updateIdea(title, body, id, star) {
+  //   console.log(allIdeas);
+  //   // var ideas = JSON.parse(localStorage.getItem("ideas"));
+  //   this.star = !this.star;
+  //   console.log(this.star);
+  //   this.title = title;
+  //   this.body = body;
+  //   console.log(allIdeas);
+  //   // localStorage.setItem("ideas", JSON.stringify(ideas));
+  //   localStorage.setItem("ideas", JSON.stringify(allIdeas));
+  // };
 
   // no window.localStorage
   updateQuality (vote) {
