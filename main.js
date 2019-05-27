@@ -47,7 +47,7 @@ function createCardsOnLoad() {
 	var newArray = [];
   allIdeas.forEach(function(idea){
 
-		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
+	var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
     newArray.push(newIdea);
     createNewCard(newIdea);
 	})
@@ -123,6 +123,7 @@ function editIdeaCard() {
 };
 
 function findIdea(id) {
+	console.log(id);
 	return allIdeas.find(function(idea) {	
 		return idea.id === id
 	})
@@ -170,8 +171,9 @@ function handleCardActions(e){
 
 // Deletes a card from the window
 function removeCard(e){
+  var id = parseInt(e.target.parentElement.parentElement.dataset.id);
   e.target.parentElement.parentElement.remove();
-	var idea = findIdea(e);
+	var idea = findIdea(id);
 	idea.deleteFromStorage();
 };
 

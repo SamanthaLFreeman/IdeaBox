@@ -1,8 +1,8 @@
 class Idea {
   constructor (title, body, id, star) {
-    this.id = id;
     this.title = title;
     this.body = body;
+    this.id = id;
     this.star = star || false;
     this.quality = 0;
   };
@@ -20,14 +20,12 @@ class Idea {
 
   deleteFromStorage (idea) {
   var indexFound = allIdeas.indexOf(this);
-  delete allIdeas[indexFound];
-  console.log(this);
-  if (this === undefined) {
-    allIdeas = [];
-    localStorage.clear();
-  } else {
+  allIdeas.splice(indexFound, 1);
+  // if (this === undefined) {
+  //   allIdeas = [];
+    // localStorage.clear();
+  // } else {
     this.saveToStorage(allIdeas);
-     }
   }
 
   updateIdea() {
