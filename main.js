@@ -28,33 +28,17 @@ saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
-// access cards in local storage and take value from 
-// when the user clicks out of or hits the enter button whilst in the idea card text area,
-// grab the text changes from both inputs
-// grab the 
-// the two values will be saved to local storage
-function saveEditTitle(e) {
+// Saves edited content within the idea to localStorage
+function saveEdit(e) {
 	console.log(e)
+	var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
 	if (e.keyCode === 13 || e.type === 'blur') {
 	var newValue = e.target.innerText;
 	var cardId = e.path[2].attributes[1].value
 	var ideaToEdit = allIdeas.find(function(idea){
 		return cardId == idea.id 
 	})
-	ideaToEdit.title = newValue
-	}
-	ideaToEdit.saveToStorage(allIdeas);
-};
-
-function saveEditBody(e) {
-	console.log(e)
-	if (e.keyCode === 13 || e.type === 'blur') {
-	var newValue = e.target.innerText;
-	var cardId = e.path[2].attributes[1].value
-	var ideaToEdit = allIdeas.find(function(idea){
-		return cardId == idea.id 
-	})
-	ideaToEdit.body = newValue;
+	ideaToEdit[element] = newValue
 	}
 	ideaToEdit.saveToStorage(allIdeas);
 };
@@ -98,11 +82,11 @@ function createNewCard(idea) {
 	var clone = template.content.cloneNode(true);
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
 	clone.getElementById('js-idea-title').innerText = idea.title;
-	clone.getElementById('js-idea-title').addEventListener('keyup', saveEditTitle);
-	clone.getElementById('js-idea-title').addEventListener('blur', saveEditTitle);
+	clone.getElementById('js-idea-title').addEventListener('keyup', saveEdit);
+	clone.getElementById('js-idea-title').addEventListener('blur', saveEdit);
 	clone.getElementById('js-idea-body').innerText = idea.body;
-	clone.getElementById('js-idea-body').addEventListener('keyup', saveEditBody);
-	clone.getElementById('js-idea-body').addEventListener('blur', saveEditBody);
+	clone.getElementById('js-idea-body').addEventListener('keyup', saveEdit);
+	clone.getElementById('js-idea-body').addEventListener('blur', saveEdit);
 	clone.getElementById('js-quality-value').innerText = 'Swill';
 	bottomSection.insertBefore(clone, bottomSection.firstChild);
 };
