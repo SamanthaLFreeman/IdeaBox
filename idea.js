@@ -27,10 +27,9 @@ class Idea {
     localStorage.clear();
   } else {
     this.saveToStorage(allIdeas);
-  }
+     }
   }
   
-
   updateIdea(title, body, id, star) {
     console.log(allIdeas);
     // var ideas = JSON.parse(localStorage.getItem("ideas"));

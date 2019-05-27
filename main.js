@@ -9,14 +9,15 @@ var newQualityBtn = document.querySelector('#js-new-quality-btn');
 var titleInput = document.querySelector('#js-title-input');
 var bodyInput = document.querySelector('#js-body-input');
 var saveBtn = document.querySelector('#js-save-btn');
-var searchBtn = document.querySelector('#js-search-btn')
+var searchBtn = document.querySelector('#js-search-btn');
 var searchInput = document.querySelector('#js-search-input');
 var ideaCard = document.querySelector('#js-idea-card');
 var bottomSection = document.querySelector('#js-bottom-section');
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
-var starBtn = document.querySelector('#favoriteBtn')
+var starBtn = document.querySelector('#favoriteBtn');
+var ideaText = document.querySelector('.idea-text');
 var titleText = '';
 var bodyText = '';
 saveBtn.disabled = true;
@@ -27,12 +28,28 @@ saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 
+// Saves edited content within the idea to localStorage
+function saveEdit(e) {
+	console.log(e)
+	var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
+	if (e.keyCode === 13 || e.type === 'blur') {
+	var newValue = e.target.innerText;
+	var cardId = e.path[2].attributes[1].value
+	var ideaToEdit = allIdeas.find(function(idea){
+		return cardId == idea.id 
+	})
+	ideaToEdit[element] = newValue
+	}
+	ideaToEdit.saveToStorage(allIdeas);
+};
+
 function createCardsOnLoad() {
 	var newArray = [];
   allIdeas.forEach(function(idea){
 		var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
     newArray.push(newIdea);
     createNewCard(newIdea);
+
 	})
   allIdeas = newArray;
 };
@@ -45,15 +62,13 @@ createCardsOnLoad();
 
 function findTheIndex(id) {
   var findTheIndex = allIdeas.findIndex(function(card) {
-    // console.log(card.id);
-    // console.log(id)
     if (card.id === parseInt(id)) {
       return card;
     }
   })
   console.log(findTheIndex);
   console.log(allIdeas[findTheIndex])
-}
+};
 
 
 function instantiateIdea() {
@@ -71,7 +86,11 @@ function createNewCard(idea) {
 	var clone = template.content.cloneNode(true);
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
 	clone.getElementById('js-idea-title').innerText = idea.title;
+	clone.getElementById('js-idea-title').addEventListener('keyup', saveEdit);
+	clone.getElementById('js-idea-title').addEventListener('blur', saveEdit);
 	clone.getElementById('js-idea-body').innerText = idea.body;
+	clone.getElementById('js-idea-body').addEventListener('keyup', saveEdit);
+	clone.getElementById('js-idea-body').addEventListener('blur', saveEdit);
 	clone.getElementById('js-quality-value').innerText = 'Swill';
 	bottomSection.insertBefore(clone, bottomSection.firstChild);
 };
@@ -88,9 +107,19 @@ function disableBtns() {
   saveBtn.disabled = disabledBtn;
 };
 
-function findIdea(e) {
+function toggleFavorite() {
+  var starButton = document.getElementById('favoriteBtn');
+  starButton.classList.add('orangeStar');
+};
 
-	var id = Number(e.target.closest('#article-card').getAttribute('data-id'));
+function editIdeaCard() {
+	var editText = document.querySelectorAll('#js-idea-text');
+	for (var i = 0; i < editText.length; i++) {
+	editText.createElement('textarea')
+	}
+};
+
+function findIdea(id) {
 	return allIdeas.find(function(idea) {	
 		return idea.id === id
 	})
@@ -99,7 +128,6 @@ function findIdea(e) {
 // Toggles the star icon
 function toggleStar(id) {
 	var idea = findIdea(id)
-  // console.log(idea);
   findTheIndex(id)
   // var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
   // newIdea.updateIdea();
@@ -127,14 +155,6 @@ function removeCard(e){
 	idea.deleteFromStorage();
 };
 
-
-// function returnText() {
-// 	event.keyCode === 13 
-// 		console.log('13')
-// };
-// ideaBody.addEventListener('blur', );
-// event.keyCode === 13
-
 // attempts to connect idea.js and main.js
 // Idea.listIdeas();
 // ['idea_id'].saveToStorage
@@ -148,6 +168,5 @@ function removeCard(e){
 
 //hover change delete image to active
 
-//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
 
-// Tell the DOM that when the page loads retrieve the saved stringified object
+//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field

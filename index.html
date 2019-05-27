@@ -52,6 +52,7 @@
         <input
           type='text' 
           class='title-input input-border' 
+          placeholder= 'Name your idea'
           id='js-title-input'/>
       </label>
       <label class='body-input-label top-section-labels'> 
@@ -59,6 +60,7 @@
         <textarea
           type='text' 
           rows='3'
+          placeholder='Your idea here'
           class='body-input input-border' 
           id='js-body-input'></textarea>
       </label>
@@ -85,10 +87,10 @@
           <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
         </div>
         <div class='body-card'> 
-          <h3 id='js-idea-title' contenteditable='true'>
+          <h3 class ='idea-text' id='js-idea-title' contenteditable='true'>
             ${title}
           </h3>
-          <p id='js-idea-body' contenteditable='true'>
+          <p class ='idea-text'id='js-idea-body' contenteditable='true'>
             ${body}
           </p>
         </div>
