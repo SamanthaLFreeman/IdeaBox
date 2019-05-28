@@ -12,39 +12,31 @@ class Idea {
     localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
-
   toggleStar () {
     var ideas = JSON.parse(localStorage.getItem("ideas"));
     this.star = !this.star;
   };
 
   deleteFromStorage (idea) {
-  var indexFound = allIdeas.indexOf(this);
-  allIdeas.splice(indexFound, 1);
+    var indexFound = allIdeas.indexOf(this);
+    allIdeas.splice(indexFound, 1);
   // if (this === undefined) {
   //   allIdeas = [];
     // localStorage.clear();
   // } else {
     this.saveToStorage(allIdeas);
-  }
+  };
 
-  updateIdea() {
+  updateIdea(allIdeas, element, newValue) {
     this.star = !this.star;
-  }
+    if (element === 'title') {
+      this.title = newValue
+    } else if (element === 'body') {
+      this.body = newValue
+    }
+    this.saveToStorage(allIdeas)
+  };
   
-  // updateIdea(title, body, id, star) {
-  //   console.log(allIdeas);
-  //   // var ideas = JSON.parse(localStorage.getItem("ideas"));
-  //   this.star = !this.star;
-  //   console.log(this.star);
-  //   this.title = title;
-  //   this.body = body;
-  //   console.log(allIdeas);
-  //   // localStorage.setItem("ideas", JSON.stringify(ideas));
-  //   localStorage.setItem("ideas", JSON.stringify(allIdeas));
-  // };
-
-  // no window.localStorage
   updateQuality (vote) {
     if (vote > 0) {
       //Up vote
