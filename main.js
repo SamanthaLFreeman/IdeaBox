@@ -27,6 +27,7 @@ bottomSection.addEventListener('click', handleCardActions);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
+searchInput.addEventListener('keydown', filterIdeas);
 
 // Saves edited content within the idea to localStorage
 function saveEdit(e) {
@@ -160,6 +161,22 @@ function handleCardActions(e){
 function removeCard(e){
   var id = parseInt(e.target.parentElement.parentElement.dataset.id);
   e.target.parentElement.parentElement.remove();
-  var idea = findIdea(id);
-  idea.deleteFromStorage();
+	var idea = findIdea(id);
+	idea.deleteFromStorage();
 };
+
+//As the user types in the search box, the ideas should filter in real time 
+//to only display ideas whose title or body include the text.
+//clearing the search box should restore all ideas
+
+function filterIdeas(e) {
+  var searchTextField = e.target.value.toLowerCase();
+  var results = allIdeas.filter(function(idea){
+      return idea.title.toLowerCase().includes(searchTextField) || idea.body.toLowerCase().includes(searchTextField);
+    })
+    bottomSection.innerText = '';
+    results.forEach(function(idea){
+      createNewCard(idea);
+    })
+};
+

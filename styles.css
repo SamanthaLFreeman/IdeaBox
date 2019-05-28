@@ -42,7 +42,7 @@ li {
 	padding: 5px;
 }
 
-li:active {
+li:hover {
 	background-color: #D14119;
 	border-left: 4px #F58E72 solid;
 }
@@ -150,7 +150,7 @@ li:active {
 article {
 	border: 1px solid #6E646B;
 	height: 240px;
-	margin: 30px 30px;
+	margin: 30px 30px; 
 	width: 24%;
 }
 
@@ -178,23 +178,8 @@ img {
 }
 
 .favorite {
-	background-color: transparent;
-	background-image: url(Images/star.svg);
-	background-repeat: no-repeat;
-	background-size: auto;
+  background-size: auto;
 	width: 30px;
-}
-
-.orangeStar {
-	background-image: url(Images/star-active.svg)
-}
-
-.star {
-	justify-content: flex-start;
-}
-
-.delete {
-	justify-content: flex-end;
 }
 
 .body-card {
@@ -203,6 +188,7 @@ img {
 	font-size: 18px;
 	height: 140px;
 	padding: 20px;
+
 }
 
 .quality-text {
