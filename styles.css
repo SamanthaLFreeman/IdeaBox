@@ -10,8 +10,8 @@ main {
 	grid-template-areas: 
 	"sidebar top"
 	"sidebar bottom";
-	grid-template-columns: 20% 80%;
-	grid-template-rows: 40% 60%;
+	grid-template-columns: 23% 77%;
+	grid-template-rows: 42% 58%;
 }
 
 /******NAV*****/
@@ -33,7 +33,7 @@ h2 {
 	color: #BFBFDD;
 	font-size: 1em;
 	font-weight: bold;
-	margin: 10px 10px;
+	margin: 14px 10px;
 }
 
 li {
@@ -78,30 +78,25 @@ li:active {
 
 .top-section-labels {
 	color: #1f1f3d;
-	font-size: 12px;
+	font-size: 1em;
 	font-weight: 600;
-	margin: 10px;
-	width: 50%;
+	margin: 6px;
+	width: 40%;
 }
 
-.title-input {
+.title-input,
+.body-input {
+	font-size: 1em;
 	margin-top: 5px;
 	padding: 10px;
 }
 
-.title-input-label {
+.title-input-label,
+.body-input-label,
+.save-btn-label {
 	display: flex;
     flex-direction: column;
-}
-
-.body-input-label {
-    display: flex;
-    flex-direction: column;
-}
-
-.body-input {
-	margin-top: 5px;
-	padding: 10px;
+    font-size: 1em;
 }
 
 .search-input-label {
@@ -118,6 +113,7 @@ li:active {
 }
 
 .search-input {
+	font-size: 1em;	
 	padding: 10px;
 	width: 100%;
 }
@@ -135,16 +131,11 @@ li:active {
 	border: 1px solid #1F1F3D;
 }
 
-.save-btn-label {
-	display: flex;
-	flex-direction: column;
-}
-
 .save-btn {
 	background-color: #353567;
 	border: 1px solid #A9AAD2;
 	color: #FFF;
-	font-size: 1.2em;
+	font-size: 1.3em;
 	font-weight: 600;
 	padding: 10px;
 }
