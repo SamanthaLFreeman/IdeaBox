@@ -31,7 +31,7 @@ class Idea {
     this.star = !this.star;
     if (element === 'title') {
       this.title = newValue
-    } else {
+    } else if (element === 'body') {
       this.body = newValue
     }
     this.saveToStorage(allIdeas)

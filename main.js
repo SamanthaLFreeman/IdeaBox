@@ -35,12 +35,13 @@ function saveEdit(e) {
   if (e.keyCode === 13 || e.type === 'blur') {
     var newValue = e.target.innerText;
     var cardId = e.path[2].attributes[1].value
-    var ideaToEdit = allIdeas.find(function(idea){
-      return cardId == idea.id 
-    })
+    // var ideaToEdit = allIdeas.find(function(idea){
+    //   return cardId == idea.id 
+    // })
+    var index = findTheIndex(cardId);
+  allIdeas[index].updateIdea(allIdeas, element, newValue);
 	// ideaToEdit[element] = newValue
   }
-  ideaToEdit.updateIdea(allIdeas, element, newValue);
 };
 
 function createCardsOnLoad() {
@@ -142,7 +143,6 @@ function toggleStar(e, id) {
   } else {
     e.target.setAttribute('src', 'Images/star.svg');
   }
-
 };
 
 // function changeStarImage(id) {
