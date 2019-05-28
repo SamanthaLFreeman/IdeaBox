@@ -174,9 +174,9 @@ function filterIdeas(e) {
   var results = allIdeas.filter(function(idea){
         return idea.title.toLowerCase().includes(searchTextField);
     })
-  document.querySelector("#js-bottom-section").innerHTML = '';
+  document.querySelector('#js-bottom-section').innerHTML = '';
     results.forEach(function(idea){
-      console.log('insert cards')
+      createNewCard(idea);
     })
 };
 
