@@ -55,10 +55,6 @@ allIdeas = newArray;
 };
 
 createCardsOnLoad();
-//Pass in the array of objects
-//Find the object I want by the id - find the index in the array
-//Pass the array and the index to the method (idea.js)
-//In the method - access the object by its id in the array
 
 function findTheIndex(id) {
   var findTheIndex = allIdeas.findIndex(function(card) {

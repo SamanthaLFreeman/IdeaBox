@@ -37,19 +37,6 @@ class Idea {
     this.saveToStorage(allIdeas)
   };
   
-  // updateIdea(title, body, id, star) {
-  //   console.log(allIdeas);
-  //   // var ideas = JSON.parse(localStorage.getItem("ideas"));
-  //   this.star = !this.star;
-  //   console.log(this.star);
-  //   this.title = title;
-  //   this.body = body;
-  //   console.log(allIdeas);
-  //   // localStorage.setItem("ideas", JSON.stringify(ideas));
-  //   localStorage.setItem("ideas", JSON.stringify(allIdeas));
-  // };
-
-  // no window.localStorage
   updateQuality (vote) {
     if (vote > 0) {
       //Up vote
