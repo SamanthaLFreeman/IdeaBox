@@ -33,14 +33,14 @@ function saveEdit(e) {
 	console.log(e)
 	var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
 	if (e.keyCode === 13 || e.type === 'blur') {
-	var newValue = e.target.innerText;
-	var cardId = e.path[2].attributes[1].value
-	var ideaToEdit = allIdeas.find(function(idea){
-		return cardId == idea.id 
+	  var newValue = e.target.innerText;
+	  var cardId = e.path[2].attributes[1].value
+	  var ideaToEdit = allIdeas.find(function(idea){
+	    return cardId == idea.id 
 	})
 	ideaToEdit[element] = newValue
 	}
-	ideaToEdit.saveToStorage(allIdeas);
+	ideaToEdit.updateIdea(allIdeas);
 };
 
 function createCardsOnLoad() {
@@ -71,7 +71,6 @@ function findTheIndex(id) {
   return findTheIndex;
 };
 
-
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	  clearInputs();
@@ -85,9 +84,9 @@ function instantiateIdea() {
 function createNewCard(idea) {
 	var template = document.getElementById('new-card-template');
 	var clone = template.content.cloneNode(true);
-  var star = idea.star ? 'Images/star-active.svg' : 'Images/star.svg';
+    var star = idea.star ? 'Images/star-active.svg' : 'Images/star.svg';
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
-  clone.getElementById('favoriteBtn').setAttribute('src', star);
+    clone.getElementById('favoriteBtn').setAttribute('src', star);
 	clone.getElementById('js-idea-title').innerText = idea.title;
 	clone.getElementById('js-idea-title').addEventListener('keyup', saveEdit);
 	clone.getElementById('js-idea-title').addEventListener('blur', saveEdit);
@@ -176,6 +175,23 @@ function removeCard(e){
 	var idea = findIdea(id);
 	idea.deleteFromStorage();
 };
+
+
+// - If the user reloads the page, their edits will be reflected.
+//    - This update of the data model should occur in an updateIdea,
+ // method that is defined in the Idea class.
+//    - How the dom gets updated using javascript,
+ // should happen in the main.js file (where you can still leverage your idea instance)
+
+
+
+
+
+
+
+
+
+
 
 // attempts to connect idea.js and main.js
 // Idea.listIdeas();

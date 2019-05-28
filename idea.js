@@ -30,6 +30,8 @@ class Idea {
 
   updateIdea() {
     this.star = !this.star;
+    localStorage.setItem("ideas", JSON.stringify(allIdeas));
+
   }
   
   // updateIdea(title, body, id, star) {
