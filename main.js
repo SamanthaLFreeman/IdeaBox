@@ -30,33 +30,31 @@ bodyInput.addEventListener('keyup', disableBtns);
 
 // Saves edited content within the idea to localStorage
 function saveEdit(e) {
-	console.log(e)
-	var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
-	if (e.keyCode === 13 || e.type === 'blur') {
-	var newValue = e.target.innerText;
-	var cardId = e.path[2].attributes[1].value
-	var ideaToEdit = allIdeas.find(function(idea){
-		return cardId == idea.id 
-	})
-	ideaToEdit[element] = newValue
-	}
-	ideaToEdit.saveToStorage(allIdeas);
+  console.log(e)
+  var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
+  if (e.keyCode === 13 || e.type === 'blur') {
+    var newValue = e.target.innerText;
+    var cardId = e.path[2].attributes[1].value
+    // var ideaToEdit = allIdeas.find(function(idea){
+    //   return cardId == idea.id 
+    // })
+    var index = findTheIndex(cardId);
+  allIdeas[index].updateIdea(allIdeas, element, newValue);
+	// ideaToEdit[element] = newValue
+  }
 };
 
 function createCardsOnLoad() {
-	var newArray = [];
-  allIdeas.forEach(function(idea){
-
-	var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
-    newArray.push(newIdea);
-    createNewCard(newIdea);
-	})
-
-  allIdeas = newArray;
+  var newArray = [];
+    allIdeas.forEach(function(idea){
+var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
+newArray.push(newIdea);
+createNewCard(newIdea);
+})
+allIdeas = newArray;
 };
 
 createCardsOnLoad();
-
 //Pass in the array of objects
 //Find the object I want by the id - find the index in the array
 //Pass the array and the index to the method (idea.js)
@@ -71,7 +69,6 @@ function findTheIndex(id) {
   return findTheIndex;
 };
 
-
 function instantiateIdea() {
 	var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
 	  clearInputs();
@@ -85,9 +82,9 @@ function instantiateIdea() {
 function createNewCard(idea) {
 	var template = document.getElementById('new-card-template');
 	var clone = template.content.cloneNode(true);
-  var star = idea.star ? 'Images/star-active.svg' : 'Images/star.svg';
+    var star = idea.star ? 'Images/star-active.svg' : 'Images/star.svg';
 	clone.getElementById('article-card').setAttribute('data-id', idea.id);
-  clone.getElementById('favoriteBtn').setAttribute('src', star);
+    clone.getElementById('favoriteBtn').setAttribute('src', star);
 	clone.getElementById('js-idea-title').innerText = idea.title;
 	clone.getElementById('js-idea-title').addEventListener('keyup', saveEdit);
 	clone.getElementById('js-idea-title').addEventListener('blur', saveEdit);
@@ -146,7 +143,6 @@ function toggleStar(e, id) {
   } else {
     e.target.setAttribute('src', 'Images/star.svg');
   }
-
 };
 
 // function changeStarImage(id) {
@@ -176,19 +172,3 @@ function removeCard(e){
 	var idea = findIdea(id);
 	idea.deleteFromStorage();
 };
-
-// attempts to connect idea.js and main.js
-// Idea.listIdeas();
-// ['idea_id'].saveToStorage
-// on page load - how do we have these functions fire 
-
-// *In Progress
-//function to remove the card from the screen
-//It listens for a click on the delete button and then clears the card from the page
-// event target MIGHT be the best way to select the correct card- button click should delete the card from localStorage and MAYBE refresh the page w/ current info.
-//when there are no idea cards created, there should be a placeholder text that disappears upon clicking into the text field creating an empty text field
-
-//hover change delete image to active
-
-
-//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field
