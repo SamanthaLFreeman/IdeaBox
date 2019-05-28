@@ -1,4 +1,5 @@
 /******BODY*****/
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
@@ -9,8 +10,8 @@ main {
 	grid-template-areas: 
 	"sidebar top"
 	"sidebar bottom";
-	grid-template-columns: 20% 80%;
-	grid-template-rows: 40% 60%;
+	grid-template-columns: 23% 77%;
+	grid-template-rows: 42% 58%;
 }
 
 /******NAV*****/
@@ -32,7 +33,7 @@ h2 {
 	color: #BFBFDD;
 	font-size: 1em;
 	font-weight: bold;
-	margin: 10px 10px;
+	margin: 14px 10px;
 }
 
 li {
@@ -62,45 +63,40 @@ li:active {
 }
 
 .new-quality-label {
-	font-size: 14px;
 	display: grid;
+	font-size: 14px;
 	margin: 10px;
 }
 
 .new-quality-input {
+	border: #353567;
 	margin-top: 10px;
 	padding: 10px;
-	border: #353567;
 }
+
 /******TOP SECTION*****/
 
 .top-section-labels {
 	color: #1f1f3d;
-	font-size: 12px;
+	font-size: 1em;
 	font-weight: 600;
-	margin: 10px;
-	width: 50%;
+	margin: 6px;
+	width: 40%;
 }
 
-.title-input {
+.title-input,
+.body-input {
+	font-size: 1em;
 	margin-top: 5px;
 	padding: 10px;
 }
 
-
-.title-input-label {
+.title-input-label,
+.body-input-label,
+.save-btn-label {
 	display: flex;
     flex-direction: column;
-}
-
-.body-input-label {
-    display: flex;
-    flex-direction: column;
-}
-
-.body-input {
-	margin-top: 5px;
-	padding: 10px;
+    font-size: 1em;
 }
 
 .search-input-label {
@@ -117,6 +113,7 @@ li:active {
 }
 
 .search-input {
+	font-size: 1em;	
 	padding: 10px;
 	width: 100%;
 }
@@ -134,16 +131,11 @@ li:active {
 	border: 1px solid #1F1F3D;
 }
 
-.save-btn-label {
-	display: flex;
-	flex-direction: column;
-}
-
 .save-btn {
 	background-color: #353567;
 	border: 1px solid #A9AAD2;
 	color: #FFF;
-	font-size: 1.2em;
+	font-size: 1.3em;
 	font-weight: 600;
 	padding: 10px;
 }
@@ -155,18 +147,27 @@ li:active {
 
 /******BOTTOM SECTION*****/
 
-.bottom-section {
-	background-color: #EAEAF4;
-	display: flex;
-	flex-wrap: wrap;
-	grid-area: bottom;
-}
-
 article {
 	border: 1px solid #6E646B;
 	height: 240px;
 	margin: 30px 30px;
 	width: 24%;
+}
+
+h3 {
+	font-weight: 700;
+	margin: 5px 0 15px 0;
+}
+
+img {
+	width: 30px;
+}
+
+.bottom-section {
+	background-color: #EAEAF4;
+	display: flex;
+	flex-wrap: wrap;
+	grid-area: bottom;
 }
 
 .top-card {
@@ -204,11 +205,6 @@ article {
 	padding: 20px;
 }
 
-h3 {
-	font-weight: 700;
-	margin: 5px 0 15px 0;
-}
-
 .quality-text {
 	color: #FFF;
 	font-size: 14px;
@@ -222,11 +218,3 @@ h3 {
 	display: flex;
 	height: 30px;
 }
-
-img {
-	width: 30px;
-}
-
-/******IDEA CARDS*****/
-
-/******MEDIA QUERIES*****/

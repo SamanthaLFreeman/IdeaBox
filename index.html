@@ -59,7 +59,7 @@
         Body
         <textarea
           type='text' 
-          rows='3'
+          rows='5'
           placeholder='Your idea here'
           class='body-input input-border' 
           id='js-body-input'></textarea>
@@ -83,21 +83,45 @@
     <template id='new-card-template'>
       <article id='article-card' data-id=${id}>
         <div class='top-card'> 
-          <img src=${star} alt='star-icon' class='favorite' id='favoriteBtn' />
-          <img src='Images/delete.svg' alt='delete-icon' class='delete' id='js-delete' />
+          <img 
+            src=${star} 
+            alt='star-icon' 
+            class='favorite' 
+            id='favoriteBtn' />
+          <img 
+            src='Images/delete.svg' 
+            alt='delete-icon' 
+            class='delete' 
+            id='js-delete' />
         </div>
         <div class='body-card'> 
-          <h3 class ='idea-text' id='js-idea-title' contenteditable='true'>
-            ${title}
+          <h3 
+            class ='idea-text' 
+            id='js-idea-title' 
+            contenteditable='true'>
+              ${title}
           </h3>
-          <p class ='idea-text'id='js-idea-body' contenteditable='true'>
-            ${body}
+          <p 
+            class ='idea-text'
+            id='js-idea-body' 
+            contenteditable='true'>
+              ${body}
           </p>
         </div>
         <div class='bottom-card'> 
-          <img src='Images/upvote.svg' alt='up-arrow-icon' id='js-up-arrow-svg' />
-          <p class='quality-text'> Quality: <span class='quality-value' id='js-quality-value'>${quality}</span></p>
-          <img src='Images/downvote.svg' alt='down-arrow-icon' id='js-down-arrow-svg' />
+          <img 
+            src='Images/upvote.svg' 
+            alt='up-arrow-icon' 
+            id='js-up-arrow-svg' />
+          <p class='quality-text'> Quality: 
+            <span class='quality-value' id='js-quality-value'>
+              ${quality}
+            </span>
+          </p>
+          <img 
+            src='Images/downvote.svg' 
+            alt='down-arrow-icon' 
+            id='js-down-arrow-svg' />
         </div>
       </article>
     </template>
