@@ -33,26 +33,24 @@ function saveEdit(e) {
   console.log(e)
   var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
   if (e.keyCode === 13 || e.type === 'blur') {
-  var newValue = e.target.innerText;
-  var cardId = e.path[2].attributes[1].value
-  var ideaToEdit = allIdeas.find(function(idea){
-    return cardId == idea.id 
-	})
-	ideaToEdit[element] = newValue
-	}
-	ideaToEdit.updateIdea(allIdeas, element, newValue);
+    var newValue = e.target.innerText;
+    var cardId = e.path[2].attributes[1].value
+    var ideaToEdit = allIdeas.find(function(idea){
+      return cardId == idea.id 
+    })
+	// ideaToEdit[element] = newValue
+  }
+  ideaToEdit.updateIdea(allIdeas, element, newValue);
 };
 
 function createCardsOnLoad() {
-	var newArray = [];
-  allIdeas.forEach(function(idea){
-
-	var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
-    newArray.push(newIdea);
-    createNewCard(newIdea);
-	})
-
-  allIdeas = newArray;
+  var newArray = [];
+    allIdeas.forEach(function(idea){
+var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
+newArray.push(newIdea);
+createNewCard(newIdea);
+})
+allIdeas = newArray;
 };
 
 createCardsOnLoad();
@@ -174,27 +172,3 @@ function removeCard(e){
 	var idea = findIdea(id);
 	idea.deleteFromStorage();
 };
-
-
-// - If the user reloads the page, their edits will be reflected.
-//    - This update of the data model should occur in an updateIdea,
-// method that is defined in the Idea class.
-//    - How the dom gets updated using javascript,
-// should happen in the main.js file (where you can still leverage your idea instance)
-
-
-// attempts to connect idea.js and main.js
-// Idea.listIdeas();
-// ['idea_id'].saveToStorage
-// on page load - how do we have these functions fire 
-
-// *In Progress
-//function to remove the card from the screen
-//It listens for a click on the delete button and then clears the card from the page
-// event target MIGHT be the best way to select the correct card- button click should delete the card from localStorage and MAYBE refresh the page w/ current info.
-//when there are no idea cards created, there should be a placeholder text that disappears upon clicking into the text field creating an empty text field
-
-//hover change delete image to active
-
-
-//The user should be able to 'commit' their changes by pressing 'enter/return' and by clicking outside the text field

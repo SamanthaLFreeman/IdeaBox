@@ -30,9 +30,9 @@ class Idea {
   updateIdea(allIdeas, element, newValue) {
     this.star = !this.star;
     if (element === 'title') {
-      this.title === newValue
+      this.title = newValue
     } else {
-      this.body === newValue
+      this.body = newValue
     }
     this.saveToStorage(allIdeas)
   };
