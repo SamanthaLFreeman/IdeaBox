@@ -174,7 +174,7 @@ function filterIdeas(e) {
   var results = allIdeas.filter(function(idea){
       return idea.title.toLowerCase().includes(searchTextField) || idea.body.toLowerCase().includes(searchTextField);
     })
-  document.querySelector('#js-bottom-section').innerHTML = '';
+    bottomSection.innerText = '';
     results.forEach(function(idea){
       createNewCard(idea);
     })
