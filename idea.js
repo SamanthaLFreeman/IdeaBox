@@ -12,7 +12,6 @@ class Idea {
     localStorage.setItem("ideas", JSON.stringify(allIdeas));
   };
 
-
   toggleStar () {
     var ideas = JSON.parse(localStorage.getItem("ideas"));
     this.star = !this.star;
@@ -26,13 +25,17 @@ class Idea {
     // localStorage.clear();
   // } else {
     this.saveToStorage(allIdeas);
-  }
+  };
 
-  updateIdea() {
+  updateIdea(allIdeas, element, newValue) {
     this.star = !this.star;
-    localStorage.setItem("ideas", JSON.stringify(allIdeas));
-
-  }
+    if (element === 'title') {
+      this.title === newValue
+    } else {
+      this.body === newValue
+    }
+    this.saveToStorage(allIdeas)
+  };
   
   // updateIdea(title, body, id, star) {
   //   console.log(allIdeas);

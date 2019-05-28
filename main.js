@@ -30,17 +30,17 @@ bodyInput.addEventListener('keyup', disableBtns);
 
 // Saves edited content within the idea to localStorage
 function saveEdit(e) {
-	console.log(e)
-	var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
-	if (e.keyCode === 13 || e.type === 'blur') {
-	  var newValue = e.target.innerText;
-	  var cardId = e.path[2].attributes[1].value
-	  var ideaToEdit = allIdeas.find(function(idea){
-	    return cardId == idea.id 
+  console.log(e)
+  var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
+  if (e.keyCode === 13 || e.type === 'blur') {
+  var newValue = e.target.innerText;
+  var cardId = e.path[2].attributes[1].value
+  var ideaToEdit = allIdeas.find(function(idea){
+    return cardId == idea.id 
 	})
 	ideaToEdit[element] = newValue
 	}
-	ideaToEdit.updateIdea(allIdeas);
+	ideaToEdit.updateIdea(allIdeas, element, newValue);
 };
 
 function createCardsOnLoad() {
@@ -56,7 +56,6 @@ function createCardsOnLoad() {
 };
 
 createCardsOnLoad();
-
 //Pass in the array of objects
 //Find the object I want by the id - find the index in the array
 //Pass the array and the index to the method (idea.js)
@@ -179,18 +178,9 @@ function removeCard(e){
 
 // - If the user reloads the page, their edits will be reflected.
 //    - This update of the data model should occur in an updateIdea,
- // method that is defined in the Idea class.
+// method that is defined in the Idea class.
 //    - How the dom gets updated using javascript,
- // should happen in the main.js file (where you can still leverage your idea instance)
-
-
-
-
-
-
-
-
-
+// should happen in the main.js file (where you can still leverage your idea instance)
 
 
 // attempts to connect idea.js and main.js
