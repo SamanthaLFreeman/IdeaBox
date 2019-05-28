@@ -18,8 +18,8 @@ class Idea {
   };
 
   deleteFromStorage (idea) {
-  var indexFound = allIdeas.indexOf(this);
-  allIdeas.splice(indexFound, 1);
+    var indexFound = allIdeas.indexOf(this);
+    allIdeas.splice(indexFound, 1);
   // if (this === undefined) {
   //   allIdeas = [];
     // localStorage.clear();
