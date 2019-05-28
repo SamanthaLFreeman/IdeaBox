@@ -172,7 +172,7 @@ function removeCard(e){
 function filterIdeas(e) {
   var searchTextField = e.target.value.toLowerCase();
   var results = allIdeas.filter(function(idea){
-        return idea.title.toLowerCase().includes(searchTextField);
+      return idea.title.toLowerCase().includes(searchTextField) || idea.body.toLowerCase().includes(searchTextField);
     })
   document.querySelector('#js-bottom-section').innerHTML = '';
     results.forEach(function(idea){
