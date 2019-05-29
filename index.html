@@ -52,14 +52,15 @@
             type='text' 
             class='title-input input-border' 
             placeholder= 'Name your idea'
-            id='js-title-input'/>
+            id='js-title-input'
+            maxlength='30' />
         </label>
         <label class='body-input-label top-section-labels'> 
           Body
           <textarea
             type='text' 
             rows='5'
-            placeholder='Your idea here'
+            placeholder='Add your idea here'
             class='body-input input-border' 
             id='js-body-input'></textarea>
         </label>
@@ -69,7 +70,7 @@
           </button>
         </label>
         <label class='search-input-label top-section-labels'>
-          <span class="fas fa-search search-icon"></span>
+          <img src='Images/search.svg' class='search-icon'/>
           <input
             type='text'
             class='search-input input-border' 
@@ -100,7 +101,8 @@
                 ${title}
               </h3>
               <p 
-                id='js-idea-body' 
+                class='card-text-box'
+                id='js-idea-body'
                 contenteditable='true'>
                 ${body}
               </p>
