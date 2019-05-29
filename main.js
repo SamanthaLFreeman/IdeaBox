@@ -18,6 +18,15 @@ var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
 var starBtn = document.querySelector('#js-favoriteBtn');
 saveBtn.disabled = true;
+var qualityArray = ["swell", "plausible", "genius"]
+//connect the arrays, with conditional if
+//setting an array and grabbing it by index//
+//qualityArray[allindexOf];
+//qualityArray[allIdea[idea].quality]
+// idea.obj qiality
+//create fn upvote, downvote//
+//define quality
+//dom manipulation2
 
 //Event Listeners
 bottomSection.addEventListener('click', handleCardActions);
