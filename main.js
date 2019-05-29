@@ -17,8 +17,6 @@ var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
 var starBtn = document.querySelector('#js-favoriteBtn');
-var titleText = '';
-var bodyText = '';
 saveBtn.disabled = true;
 
 //Event Listeners
@@ -30,7 +28,6 @@ searchInput.addEventListener('keydown', filterIdeas);
 
 // Saves edited content within the idea to localStorage
 function saveEdit(e) {
-  console.log(e)
   var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
   if (e.keyCode === 13 || e.type === 'blur') {
     var newValue = e.target.innerText;
@@ -76,7 +73,7 @@ function createNewCard(idea) {
   var clone = template.content.cloneNode(true);
   var star = idea.star ? 'Images/star-active.svg' : 'Images/star.svg';
   clone.getElementById('article-card').setAttribute('data-id', idea.id);
-  clone.getElementById('favoriteBtn').setAttribute('src', star);
+  clone.getElementById('js-favoriteBtn').setAttribute('src', star);
   clone.getElementById('js-idea-title').innerText = idea.title;
   clone.getElementById('js-idea-title').addEventListener('keyup', saveEdit);
   clone.getElementById('js-idea-title').addEventListener('blur', saveEdit);
@@ -107,12 +104,11 @@ function toggleFavorite() {
 function editIdeaCard() {
   var editText = document.querySelectorAll('#js-idea-text');
   for (var i = 0; i < editText.length; i++) {
-    editText.createElement('textarea')
+    editText.createElement('textarea');
   }
 };
 
 function findIdea(id) {
-  console.log(id);
   return allIdeas.find(function(idea) {	
     return idea.id === id
   })
@@ -120,33 +116,17 @@ function findIdea(id) {
 
 // Toggles the star icon
 function toggleStar(e, id) {
-	// var idea = parseInt(id);
   var foundIndex = findTheIndex(id);
-  console.log(foundIndex);
   allIdeas[foundIndex].updateIdea();
   allIdeas[foundIndex].saveToStorage(allIdeas);
-  // changeStarImage(id);
   var fav = e.target;
   var star = allIdeas[foundIndex].star;
-  console.log(star);
   if (star === true) {
     e.target.setAttribute('src', 'Images/star-active.svg');
   } else {
     e.target.setAttribute('src', 'Images/star.svg');
   }
 };
-
-// function changeStarImage(id) {
-//   var fav = e.target;
-//   var foundIndex = findTheIndex(id);
-//   var star = allIdeas[foundIndex].star;
-//   console.log(star);
-//   if (star === true) {
-//     e.target.setAttribute('src', 'Images/star-active.svg');
-//   } else {
-//     e.target.setAttribute('src', 'Images/star.svg');
-//   }
-// }
 
 function handleCardActions(e){
   if (e.target.className === 'delete'){
@@ -163,10 +143,6 @@ function removeCard(e){
 	var idea = findIdea(id);
 	idea.deleteFromStorage();
 };
-
-//As the user types in the search box, the ideas should filter in real time 
-//to only display ideas whose title or body include the text.
-//clearing the search box should restore all ideas
 
 function filterIdeas(e) {
   var searchTextField = e.target.value.toLowerCase();
