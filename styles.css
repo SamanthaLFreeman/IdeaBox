@@ -108,11 +108,8 @@ li:hover {
 }
 
 .search-icon {
-	background-color: #1F1F3D;
-	color: #FFFFFF;
-	font-size: 15px;
+	height: 20px;
 	margin: auto;
-	padding: 5px;
 }
 
 .search-input {
