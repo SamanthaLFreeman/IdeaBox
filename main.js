@@ -44,6 +44,7 @@ function createCardsOnLoad() {
     newArray.push(newIdea);
     createNewCard(newIdea);
   })
+
   allIdeas = newArray;
 };
 
@@ -55,6 +56,7 @@ function findTheIndex(id) {
       return card;
     }
   })
+
   return findTheIndex;
 };
 
@@ -119,7 +121,6 @@ function toggleStar(e, id) {
   var foundIndex = findTheIndex(id);
   allIdeas[foundIndex].updateIdea();
   allIdeas[foundIndex].saveToStorage(allIdeas);
-  var fav = e.target;
   var star = allIdeas[foundIndex].star;
   if (star === true) {
     e.target.setAttribute('src', 'Images/star-active.svg');
@@ -128,8 +129,8 @@ function toggleStar(e, id) {
   }
 };
 
-function handleCardActions(e){
-  if (e.target.className === 'delete'){
+function handleCardActions(e) {
+  if (e.target.className === 'delete') {
     removeCard(e);
   } else if (e.target.className === 'favorite') {
   	toggleStar(e, e.target.parentNode.parentNode.dataset.id);
@@ -146,11 +147,12 @@ function removeCard(e){
 
 function filterIdeas(e) {
   var searchTextField = e.target.value.toLowerCase();
-  var results = allIdeas.filter(function(idea){
+  var results = allIdeas.filter(function(idea) {
       return idea.title.toLowerCase().includes(searchTextField) || idea.body.toLowerCase().includes(searchTextField);
     })
+  
     bottomSection.innerText = '';
-    results.forEach(function(idea){
+    results.forEach(function(idea) {
       createNewCard(idea);
     })
 };
