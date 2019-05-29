@@ -11,7 +11,7 @@ main {
 	"sidebar top"
 	"sidebar bottom";
 	grid-template-columns: 23% 77%;
-	grid-template-rows: 42% 58%;
+	grid-template-rows: 30% 100%;
 }
 
 /******NAV*****/
@@ -20,7 +20,9 @@ nav {
 	background-color: #1F1F3D;
 	color: #FFF;
 	grid-area: sidebar;
-	height: 100vh;
+	height: 100%;
+	position: fixed;
+	width: 23%;
 }
 
 h1 {
@@ -124,7 +126,6 @@ li:hover {
 	display: flex;
 	flex-direction: column;
 	grid-area: top;
-	justify-content: center;
 }
 
 .input-border {
@@ -140,40 +141,47 @@ li:hover {
 	padding: 10px;
 }
 
-/*.search-btn {
-	background-color: #1F1F3D;
-	color: #FFF;
-}*/
-
 /******BOTTOM SECTION*****/
+
+.bottom-section {
+	background-color: #EAEAF4;
+	display: grid;
+	height: 100vh;
+	grid-area: bottom;
+	grid-gap: 15px 25px;
+	grid-template-columns: repeat(3, 30%);
+	grid-template-rows: repeat(6, 32%);
+  padding-left: 5%;	
+  padding-top: 25px;
+}
 
 article {
 	border: 1px solid #6E646B;
-	height: 240px;
-	margin: 30px 30px; 
-	width: 24%;
+	display: grid;
+  grid-template-rows: 13% 75% 15%;
 }
 
 h3 {
+	font-size: 1em;
 	font-weight: 700;
-	margin: 5px 0 15px 0;
+	margin-bottom: 10px;
+	overflow: scroll;
+	height: 40px;
+}
+
+.card-text-box {
+	font-size: 1em;
+	height: 100px;
+	overflow: scroll;
 }
 
 img {
 	width: 30px;
 }
 
-.bottom-section {
-	background-color: #EAEAF4;
-	display: flex;
-	flex-wrap: wrap;
-	grid-area: bottom;
-}
-
 .top-card {
 	background-color: #1F1F3D;
 	display: flex;
-	height: 30px;
 	justify-content: space-between;
 }
 
@@ -185,9 +193,8 @@ img {
 .body-card {
 	background-color: #FFF;
 	color: #1F1F3D;
-	font-size: 18px;
-	height: 140px;
-	padding: 20px;
+	font-size: 16px;
+	padding: 15px;
 
 }
 

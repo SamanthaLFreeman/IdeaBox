@@ -52,7 +52,8 @@
             type='text' 
             class='title-input input-border' 
             placeholder= 'Name your idea'
-            id='js-title-input'/>
+            id='js-title-input'
+            maxlength='30' />
         </label>
         <label class='body-input-label top-section-labels'> 
           Body
@@ -100,7 +101,8 @@
                 ${title}
               </h3>
               <p 
-                id='js-idea-body' 
+                class='card-text-box'
+                id='js-idea-body'
                 contenteditable='true'>
                 ${body}
               </p>
