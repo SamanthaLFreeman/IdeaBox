@@ -7,132 +7,129 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
   <body>
-   <main>
-    <nav>
-      <div class='nav-border'>
-        <h1>
-          IdeaBox Redux
-        </h1>
-      </div>
-      <div class='nav-border'>
-        <h2> 
-          Filter Starred Ideas
-        </h2>
-        <button 
-          class='nav-btn' 
-          id='js-show-starred-ideas-btn'> 
-          Show Starred Ideas
-        </button>
-      </div>
-          <div class='nav-border'>
-            <h2> 
-              Filter by Quality
-            </h2>
-            <ul>
-              <li id='js-swill'>Swill</li>
-              <li id='js-plausible'>Plausible</li>
-              <li id='js-genius'>Genius</li>
-            </ul>
-            <label class='new-quality-label'> 
-              New Quality
-            <input 
-              type='text' 
-              class='new-quality-input' 
-              id='js-new-quality-input'>
-            </label>
-            <button class='nav-btn' id='js-new-quality-btn'>
-              Add New Quality
-            </button>
-          </div>
-      </div>
-    </nav>
-    <section class='top-section'>
-      <label class='title-input-label top-section-labels'> 
-        Title
-        <input
-          type='text' 
-          class='title-input input-border' 
-          placeholder= 'Name your idea'
-          id='js-title-input'/>
-      </label>
-      <label class='body-input-label top-section-labels'> 
-        Body
-        <textarea
-          type='text' 
-          rows='5'
-          placeholder='Your idea here'
-          class='body-input input-border' 
-          id='js-body-input'></textarea>
-      </label>
-      <label class='save-btn-label top-section-labels'>
-        <button class='save-btn' id='js-save-btn'> 
-          Save
-        </button>
-      </label>
-      <label class='search-input-label top-section-labels'>
-        <span class="fas fa-search search-icon"></span>
-        <input
-          type='text'
-          class='search-input input-border' 
-          id='js-search-input' 
-          placeholder='Search ideas'/>
-      </label>
-    </section>
-    <section class='bottom-section' id='js-bottom-section'>
-    </section>
-    <template id='new-card-template'>
-      <article id='article-card' data-id=${id}>
-        <div class='top-card'> 
-          <img 
-            src=${star} 
-            alt='star-icon' 
-            class='favorite' 
-            id='favoriteBtn' />
-          <img 
-            src='Images/delete.svg' 
-            alt='delete-icon' 
-            class='delete' 
-            id='js-delete' />
+    <main>
+      <nav>
+        <div class='nav-border'>
+          <h1>
+            IdeaBox Redux
+          </h1>
         </div>
-        <div class='body-card'> 
-          <h3 
-            class ='idea-text' 
-            id='js-idea-title' 
-            contenteditable='true'>
-              ${title}
-          </h3>
-          <p 
-            class ='idea-text'
-            id='js-idea-body' 
-            contenteditable='true'>
-              ${body}
-          </p>
+        <div class='nav-border'>
+          <h2> 
+            Filter Starred Ideas
+          </h2>
+          <button 
+            class='nav-btn' 
+            id='js-show-starred-ideas-btn'> 
+            Show Starred Ideas
+          </button>
         </div>
-        <div class='bottom-card'> 
-          <img 
-            src='Images/upvote.svg' 
-            alt='up-arrow-icon' 
-            id='js-up-arrow-svg' />
-          <p class='quality-text'> Quality: 
-            <span class='quality-value' id='js-quality-value'>
-              ${quality}
-            </span>
-          </p>
-          <img 
-            src='Images/downvote.svg' 
-            alt='down-arrow-icon' 
-            id='js-down-arrow-svg' />
+        <div class='nav-border'>
+          <h2> 
+            Filter by Quality
+          </h2>
+          <ul>
+            <li id='js-swill'>Swill</li>
+            <li id='js-plausible'>Plausible</li>
+            <li id='js-genius'>Genius</li>
+          </ul>
+          <label class='new-quality-label'> 
+            New Quality
+          <input 
+            type='text' 
+            class='new-quality-input' 
+            id='js-new-quality-input'>
+          </label>
+          <button class='nav-btn' id='js-new-quality-btn'>
+            Add New Quality
+          </button>
         </div>
-      </article>
-    </template>
-    <script 
-      type='text/javascript' 
-      src='idea.js'>
-    </script>
-    <script 
-      type='text/javascript'
-      src='main.js'>
-    </script>
-  </main>
+      </nav>
+      <section class='top-section'>
+        <label class='title-input-label top-section-labels'> 
+          Title
+          <input
+            type='text' 
+            class='title-input input-border' 
+            placeholder= 'Name your idea'
+            id='js-title-input'/>
+        </label>
+        <label class='body-input-label top-section-labels'> 
+          Body
+          <textarea
+            type='text' 
+            rows='5'
+            placeholder='Your idea here'
+            class='body-input input-border' 
+            id='js-body-input'></textarea>
+        </label>
+        <label class='save-btn-label top-section-labels'>
+          <button class='save-btn' id='js-save-btn'> 
+            Save
+          </button>
+        </label>
+        <label class='search-input-label top-section-labels'>
+          <span class="fas fa-search search-icon"></span>
+          <input
+            type='text'
+            class='search-input input-border' 
+            id='js-search-input' 
+            placeholder='Search ideas'/>
+        </label>
+      </section>
+      <section class='bottom-section' id='js-bottom-section'>
+        <template id='new-card-template'>
+          <article id='article-card' data-id=${id}>
+            <div class='top-card'> 
+              <img 
+                src=${star} 
+                alt='star-icon' 
+                class='favorite' 
+                id='js-favoriteBtn' />
+              <img 
+                src='Images/delete.svg' 
+                alt='delete-icon' 
+                class='delete' 
+                id='js-delete' />
+            </div>
+            <div class='body-card'> 
+              <h3 
+                id='js-idea-title' 
+                contenteditable='true'>
+                ${title}
+              </h3>
+              <p 
+                id='js-idea-body' 
+                contenteditable='true'>
+                ${body}
+              </p>
+            </div>
+            <div class='bottom-card'> 
+              <img 
+                src='Images/upvote.svg' 
+                alt='up-arrow-icon' 
+                id='js-up-arrow-svg' />
+              <p class='quality-text'> Quality: 
+              <span class='quality-value' id='js-quality-value'>
+                ${quality}
+              </span>
+              </p>
+              <img 
+                src='Images/downvote.svg' 
+                alt='down-arrow-icon' 
+                id='js-down-arrow-svg' />
+            </div>
+          </article>
+        </template>
+      </section>
+      <script 
+        type='text/javascript' 
+        src='idea.js'>
+      </script>
+      <script 
+        type='text/javascript'
+        src='main.js'>
+      </script>
+    </main>
   </body>
 </html>
