@@ -1,4 +1,3 @@
-// Global Variables
 var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
@@ -18,24 +17,13 @@ var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
 var starBtn = document.querySelector('#js-favoriteBtn');
 saveBtn.disabled = true;
-var qualityArray = ["swell", "plausible", "genius"]
-//connect the arrays, with conditional if
-//setting an array and grabbing it by index//
-//qualityArray[allindexOf];
-//qualityArray[allIdea[idea].quality]
-// idea.obj qiality
-//create fn upvote, downvote//
-//define quality
-//dom manipulation2
 
-//Event Listeners
 bottomSection.addEventListener('click', handleCardActions);
 saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 searchInput.addEventListener('keydown', filterIdeas);
 
-// Saves edited content within the idea to localStorage
 function saveEdit(e) {
   var element = e.target.id === 'js-idea-title' ? 'title' : 'body'
   if (e.keyCode === 13 || e.type === 'blur') {
@@ -78,7 +66,6 @@ function instantiateIdea() {
   createNewCard(newIdea);
 };
 
-//When save is clicked a new card appears in the bottom section
 function createNewCard(idea) {
   var template = document.getElementById('new-card-template');
   var clone = template.content.cloneNode(true);
@@ -95,13 +82,11 @@ function createNewCard(idea) {
   bottomSection.insertBefore(clone, bottomSection.firstChild);
 };
 
-//Clears the two input fields (add to new card function, so it clears after a card is created)
 function clearInputs() {
   titleInput.value = '';
   bodyInput.value = '';
 };
 
-//Lists for a key up in the title and body inputs, then enables the save button 
 function disableBtns() {
   var disabledBtn = titleInput.value === '' || bodyInput.value === '';
   saveBtn.disabled = disabledBtn;
@@ -125,7 +110,6 @@ function findIdea(id) {
   })
 };
 
-// Toggles the star icon
 function toggleStar(e, id) {
   var foundIndex = findTheIndex(id);
   allIdeas[foundIndex].updateIdea();
@@ -146,7 +130,6 @@ function handleCardActions(e) {
   }
 };
 
-// Deletes a card from the window
 function removeCard(e){
   var id = parseInt(e.target.parentElement.parentElement.dataset.id);
   e.target.parentElement.parentElement.remove();
@@ -165,4 +148,3 @@ function filterIdeas(e) {
       createNewCard(idea);
     })
 };
-

@@ -1,5 +1,4 @@
 /******BODY*****/
-
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
@@ -15,7 +14,6 @@ main {
 }
 
 /******NAV*****/
-
 nav {
 	background-color: #1F1F3D;
 	color: #FFF;
@@ -78,7 +76,6 @@ li:hover {
 }
 
 /******TOP SECTION*****/
-
 .top-section-labels {
 	color: #1f1f3d;
 	font-size: 1em;
@@ -98,8 +95,8 @@ li:hover {
 .body-input-label,
 .save-btn-label {
 	display: flex;
-    flex-direction: column;
-    font-size: 1em;
+  flex-direction: column;
+  font-size: 1em;
 }
 
 .search-input-label {
@@ -140,15 +137,14 @@ li:hover {
 }
 
 /******BOTTOM SECTION*****/
-
 .bottom-section {
 	background-color: #EAEAF4;
 	display: grid;
-	height: 100vh;
 	grid-area: bottom;
 	grid-gap: 15px 25px;
 	grid-template-columns: repeat(3, 30%);
 	grid-template-rows: repeat(6, 32%);
+	height: 100vh;
   padding-left: 5%;	
   padding-top: 25px;
 }
@@ -162,9 +158,9 @@ article {
 h3 {
 	font-size: 1em;
 	font-weight: 700;
+	height: 40px;
 	margin-bottom: 10px;
 	overflow: scroll;
-	height: 40px;
 }
 
 .card-text-box {
@@ -193,7 +189,6 @@ img {
 	color: #1F1F3D;
 	font-size: 16px;
 	padding: 15px;
-
 }
 
 .quality-text {
