@@ -1,5 +1,5 @@
 // Global Variables
-var allIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
+var allIdeas = JSON.parse(localStorage.getItem('ideas')) || [];
 var starredIdeasBtn = document.querySelector('#js-show-starred-ideas-btn');
 var swillQuality = document.querySelector('#js-swill');
 var plausibleQuality = document.querySelector('#js-plausible');
@@ -11,22 +11,17 @@ var bodyInput = document.querySelector('#js-body-input');
 var saveBtn = document.querySelector('#js-save-btn');
 var searchBtn = document.querySelector('#js-search-btn');
 var searchInput = document.querySelector('#js-search-input');
-var ideaCard = document.querySelector('#js-idea-card');
+// 
 var bottomSection = document.querySelector('#js-bottom-section');
 var ideaTitle = document.querySelector('#js-idea-title');
 var ideaBody = document.querySelector('#js-idea-body');
 var bottomSection = document.querySelector('#js-bottom-section');
 var starBtn = document.querySelector('#js-favoriteBtn');
 saveBtn.disabled = true;
-var qualityArray = ["swell", "plausible", "genius"]
-//connect the arrays, with conditional if
-//setting an array and grabbing it by index//
-//qualityArray[allindexOf];
-//qualityArray[allIdea[idea].quality]
-// idea.obj qiality
-//create fn upvote, downvote//
-//define quality
-//dom manipulation2
+var upVote = document.querySelector('.up-arrow');
+var downVote = document.querySelector('.down-arrow');
+var qualityArray = ["swell", "plausible", "genius"];
+
 
 //Event Listeners
 bottomSection.addEventListener('click', handleCardActions);
@@ -34,6 +29,21 @@ saveBtn.addEventListener('click', instantiateIdea);
 titleInput.addEventListener('keyup', disableBtns);
 bodyInput.addEventListener('keyup', disableBtns);
 searchInput.addEventListener('keydown', filterIdeas);
+
+
+function changeQuality(e){
+  var ideaQuality = Idea.quality;
+   console.log(ideaQuality);
+  var qualityText = qualityArray[ideaQuality];
+ 
+
+ 
+
+
+  // idea.quality[qualityArray];
+  // var ideaQuality = e.target.innerText;
+}
+
 
 // Saves edited content within the idea to localStorage
 function saveEdit(e) {
@@ -70,7 +80,7 @@ function findTheIndex(id) {
 };
 
 function instantiateIdea() {
-  var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now());
+  var newIdea = new Idea(titleInput.value, bodyInput.value, Date.now(), );
   clearInputs();
   allIdeas.push(newIdea);
   newIdea.saveToStorage(allIdeas);
@@ -143,6 +153,8 @@ function handleCardActions(e) {
     removeCard(e);
   } else if (e.target.className === 'favorite') {
   	toggleStar(e, e.target.parentNode.parentNode.dataset.id);
+  } else if (e.target.className === 'up-arrow') {
+    changeQuality(e, e.target.parentNode.parentNode.dataset.id);
   }
 };
 
