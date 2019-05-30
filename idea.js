@@ -1,10 +1,10 @@
 class Idea {
-  constructor(title, body, id, star) {
+  constructor(title, body, id, star, quality) {
     this.title = title;
     this.body = body;
     this.id = id;
     this.star = star || false;
-    this.quality = 0;
+    this.quality = quality || 0;
   };
 
   saveToStorage(allIdeas) {
@@ -29,16 +29,17 @@ class Idea {
   };
   
   updateQuality(vote) {
-      if (this.quality < 2) {
-        this.quality++;
-       } else {
-      if (this.quality > 0) {
-        this.quality--;
-      }
-    }
+    this.quality++;
+      // if (this.quality <= 2) {
+      //   this.quality++;
+      //  } else {
+      // if (this.quality > 0) {
+      //   this.quality--;
+      // }
+    // }
     
-    var ideas = JSON.parse(localStorage.getItem("ideas"));
-    ideas[this.id].quality = this.quality;
-    localStorage.setItem("ideas", JSON.stringify(ideas));
+    // var ideas = JSON.parse(localStorage.getItem("ideas"));
+    // ideas[this.id].quality = this.quality;
+    // localStorage.setItem("ideas", JSON.stringify(ideas));
   };
 };

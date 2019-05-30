@@ -20,7 +20,7 @@ var starBtn = document.querySelector('#js-favoriteBtn');
 saveBtn.disabled = true;
 var upVote = document.querySelector('.up-arrow');
 var downVote = document.querySelector('.down-arrow');
-var qualityArray = ["swell", "plausible", "genius"];
+var qualityArray = ["swill", "plausible", "genius"];
 
 
 //Event Listeners
@@ -31,14 +31,14 @@ bodyInput.addEventListener('keyup', disableBtns);
 searchInput.addEventListener('keydown', filterIdeas);
 
 
-function changeQuality(e){
-  var ideaQuality = Idea.quality;
-   console.log(ideaQuality);
-  var qualityText = qualityArray[ideaQuality];
- 
-
- 
-
+function changeQuality(e, id){
+  var foundIndex = findTheIndex(id);
+  var quality = allIdeas[foundIndex].quality
+  allIdeas[foundIndex].updateQuality()
+  console.log(quality);
+  // var ideaQuality = Idea.quality;
+  // var qualityText = qualityArray[newQuality];
+  
 
   // idea.quality[qualityArray];
   // var ideaQuality = e.target.innerText;
@@ -59,7 +59,7 @@ function saveEdit(e) {
 function createCardsOnLoad() {
   var newArray = [];
   allIdeas.forEach(function(idea){
-    var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star);
+    var newIdea = new Idea(idea.title, idea.body, idea.id, idea.star, idea.quality);
     newArray.push(newIdea);
     createNewCard(newIdea);
   })
@@ -101,7 +101,7 @@ function createNewCard(idea) {
   clone.getElementById('js-idea-body').innerText = idea.body;
   clone.getElementById('js-idea-body').addEventListener('keyup', saveEdit);
   clone.getElementById('js-idea-body').addEventListener('blur', saveEdit);
-  clone.getElementById('js-quality-value').innerText = 'Swill';
+  clone.getElementById('js-quality-value').innerText = idea.quality;
   bottomSection.insertBefore(clone, bottomSection.firstChild);
 };
 
